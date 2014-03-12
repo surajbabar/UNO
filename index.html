@@ -1,0 +1,18 @@
+<html ng-app="uno" ng-controller="controller">
+<head>
+  <title>Game Setting</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js"></script>
+  <script type="text/javascript" src = "js/controller.js"></script>
+</head>
+
+<body>
+  <div>
+    <form ng-submit="createGame()">
+      Packs: <input type="text" ng-model="packs"/></br>
+      Players: <input type="text" ng-model="players"/>
+      </br>
+      <input type="submit" value="Start Game"/>
+    </form>
+  </div>
+</body>
+</html>
