@@ -1,5 +1,9 @@
 var card = {};
 
+card.createCard = function(sign, color){
+	return {sign:sign,value:(+sign),color:color};
+}
+
 card.getCardPack = function(noOfPacks){
 	var cards = [];
 	for (var i = 0; i < noOfPacks; i++){
@@ -23,10 +27,5 @@ var createPack = function(){
 	});
 	return pack;
 }
-
-card.createCard = function(sign,color){
-	return {sign:sign,value:(+sign),color:color};
-}
-
 
 exports.card = card;

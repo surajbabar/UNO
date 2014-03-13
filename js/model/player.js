@@ -1,55 +1,58 @@
-var player = {name:"",cards:[],declaredUno:false};
+var player = {};
 
 player.createPlayer = function(name){
-	player.name = name;
-	return player;
+	return {name:name,cards:[],declaredUno:false};
+	// player.name = name;
+	// player.cards = [];
+	// player.declaredUno = false;
+	// return player;
 }
 
-player.takeCard = function(card) {
-	player.cards.push(card);
-	player.declaredUno = false;
+player.takeCard = function(plyer,card) {
+	plyer.cards.push(card);
+	plyer.declaredUno = false;
 }
 
-player.populateSelf = function(snapshot){
+player.populateSelf = function(plyer,snapshot){
 	snapshot.myCards = [];
-	player.cards.forEach(function(card){
+	plyer.cards.forEach(function(card){
 		snapshot.myCards.push(card);
 	});
 }
 
-player.generateSummary = function(){
-	return {name:player.name,noOfCards:player.cards.length,unoStatus:player.declaredUno};
+player.generateSummary = function(plyer){
+	return {name:plyer.name,noOfCards:plyer.cards.length,unoStatus:plyer.declaredUno};
 }
 
-player.playCard = function(card){
+player.playCard = function(plyer,card){
 	var i = 0;
-	for (i; i < player.cards.length; i++) {
-		if(player.cards[i].sign == card.sign && player.cards[i].color == card.color)
+	for (i; i < plyer.cards.length; i++) {
+		if(plyer.cards[i].sign == card.sign && plyer.cards[i].color == card.color)
 			break;
 	};
-	player.cards.splice(i,1);
+	plyer.cards.splice(i,1);
 }
 
-player.declareUno = function(){
-	player.declareUno = true;
+player.declareUno = function(plyer){
+	plyer.declaredUno = true;
 }
 
-player.checkUno = function(){
-    return player.cards.length == 1 && !declaredUno;
+player.checkUno = function(plyer){
+    return plyer.cards.length == 1 && !plyer.declaredUno;
 }
 
-player.hasWon = function(){
-	return player.cards.length == 0;
+player.hasWon = function(plyer){
+	return plyer.cards.length == 0;
 }
 
-player.generateResult = function(){
-	return {name:player.name,cards:player.cards,points:calculatePoints()};
+player.generateResult = function(plyer){
+	return {name:plyer.name,cards:plyer.cards,points:calculatePoints(plyer)};
 }
 
-var calculatePoints = function(){
+var calculatePoints = function(plyer){
 	var total = 0;
-	player.cards.forEach(function(card){
-		total+=card.sign[1];
+	plyer.cards.forEach(function(card){
+		total+=card.value;
 	});
 	return total;
 }
