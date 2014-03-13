@@ -2,10 +2,6 @@ var player = {};
 
 player.createPlayer = function(name){
 	return {name:name,cards:[],declaredUno:false};
-	// player.name = name;
-	// player.cards = [];
-	// player.declaredUno = false;
-	// return player;
 }
 
 player.takeCard = function(plyer,card) {

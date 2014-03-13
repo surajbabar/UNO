@@ -4,9 +4,10 @@ var card = require("../../../js/model/card.js").card;
 
 describe('Player', function(){
   describe('#createPlayer', function(){
-    it('should give a player having name', function(){
+    it('should give a player having name,cards and unoStatus', function(){
       var me = player.createPlayer('me');
-      assert.equal('me',me.name);
+      var expected = {name:'me',cards:[],declaredUno:false};
+      assert.deepEqual(expected,me);
     })
   })
 

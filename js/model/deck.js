@@ -2,38 +2,37 @@ var deck = {};
 var card = require('./card.js').card;
 
 deck.create = function(numberOfPacks){
-	deck.cards = card.getCardPack(numberOfPacks);
-	return deck;
+	return {cards:card.getCardPack(numberOfPacks)};
 };
 
-deck.shuffle = function(){
-	deck.cards.sort(function() { return 0.5 - Math.random()});
+deck.shuffle = function(dck){
+	dck.cards.sort(function() { return 0.5 - Math.random()});
 };
 
-deck.draw = function(){
-	deck.cards.splice(0,1); //removes first card
+deck.draw = function(dck){
+	dck.cards.splice(0,1); //removes first card
 };
 
-deck.add = function(card){
-	deck.cards.push(card);
+deck.add = function(dck,card){
+	dck.cards.push(card);
 };
 
-deck.lookAtLast = function(){
-	return deck.cards[deck.cards.length-1];
+deck.lookAtLast = function(dck){
+	return dck.cards[dck.cards.length-1];
 };
 
-deck.isEmpty = function(){
-	return deck.cards.length==0;
+deck.isEmpty = function(dck){
+	return dck.cards.length==0;
 };
 
-deck.addAll = function(newCards){
+deck.addAll = function(dck,newCards){
 	newCards.forEach(function(card){
-	deck.cards.push(card);
+	dck.cards.push(card);
 	});
 };
 
-deck.drawAllButLast =function(){
-	return deck.cards.splice(1,deck.cards.length-1);
+deck.drawAllButLast =function(dck){
+	return dck.cards.splice(1,dck.cards.length-1);
 };
 
 exports.deck=deck;
