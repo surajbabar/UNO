@@ -1,4 +1,4 @@
-folders=( "js/model")
+folders=( "test/js/model")
 
 for i in "${folders[@]}"
   do
