@@ -15,12 +15,18 @@ var createPack = function(){
 	var pack = [];
 	var colors = ["red","blue","yellow","green"];
 	colors.forEach(function(color){
-		pack.push({sign:"0",color:color});
+		pack.push({sign:["0",0],color:color});
 		for (var i = 1; i < 10; i++) {
-			pack.push({sign:i.toString(),color:color});
-			pack.push({sign:i.toString(),color:color});
+			pack.push({sign:i.toString(),value:i,color:color});
+			pack.push({sign:i.toString(),value:i,color:color});
 		}
 	});
 	return pack;
 }
+
+card.createCard = function(sign,color){
+	return {sign:sign,value:(+sign),color:color};
+}
+
+
 exports.card = card;
