@@ -68,7 +68,7 @@ var handleSkip = function(playedCard) {
 
 var handleDrawTwo = function(playedCard) {
     if (playedCard.sign != "DrawTwo") return;
-    draw2Run++;
+    drawTwoRun++;
 }
 
 var handleWildCard = function(playedCard,newColor) {
@@ -121,8 +121,8 @@ game.populateResult = function(gameResult) {
 }
 
 var drawTwoCards = function(plyr) {
-    for (var i = 0; i < draw2Run * 2; i++) player.takeCard(plyr,draw());
-    draw2Run = 0;
+    for (var i = 0; i < drawTwoRun * 2; i++) player.takeCard(plyr,draw());
+    drawTwoRun = 0;
     nextTurn();
 }
 
@@ -136,7 +136,7 @@ var getTime =function(){
 }
 
 var updateLogAfterDraw = function(plyr) {
-    log.push(getTime() +" " + plyr.name + " drew a card " + "\n");
+    log.push(getTime() +" " + plyr.name + " drew a card" + "\n");
 }
 
 var updateLogAfterPlay = function(plyr,playedCard) {
@@ -159,8 +159,8 @@ game.populate = function(snapshot,plyr) {
     snapshot.currentPlayerIndex = currentPlayerIndex;
     snapshot.openCard = deck.lookAtLast(openDeck);
     snapshot.isInAscendingOrder = isInAscendingOrder;
-    snapshot.runningColour = runningColour;
-    snapshot.draw2Run = draw2Run;
+    snapshot.runningColor = runningColor;
+    snapshot.drawTwoRun = drawTwoRun;
     snapshot.currentTurnLog = log[log.length-1];
 }
 
