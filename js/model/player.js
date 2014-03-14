@@ -1,4 +1,5 @@
 var player = {};
+var gameCard = require('./card.js').card;
 
 player.createPlayer = function(name){
 	return {name:name,cards:[],declaredUno:false};
@@ -48,7 +49,7 @@ player.generateResult = function(plyer){
 var calculatePoints = function(plyer){
 	var total = 0;
 	plyer.cards.forEach(function(card){
-		total+=card.value;
+		total+=gameCard.getPoints(card);
 	});
 	return total;
 }

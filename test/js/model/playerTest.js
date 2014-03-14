@@ -107,14 +107,14 @@ describe('Player', function(){
   describe('#generateResult',function(){
       it('should give player name,left cards and points as result',function(){
         var me = player.createPlayer('me');
-         var greenCard = card.createCard("1","green");
-         var blueCard = card.createCard("1","blue");
+         var drawFour = card.createCard("DrawFour","black");
+         var blueCard = card.createCard("Skip","blue");
 
-         player.takeCard(me,greenCard);
+         player.takeCard(me,drawFour);
          player.takeCard(me,blueCard);
 
          var result = player.generateResult(me);
-         var expected = {name:'me',cards:[greenCard,blueCard],points:2};
+         var expected = {name:'me',cards:[drawFour,blueCard],points:70};
          assert.deepEqual(expected,result);
       })
   })  

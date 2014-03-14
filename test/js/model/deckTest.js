@@ -7,7 +7,7 @@ describe('Deck', function() {
     describe('#create', function() {
         it('should create a deck with 2 packs ', function() {
             var deckWith2Packs = deck.create(2);
-            assert.equal(152,deckWith2Packs.cards.length);
+            assert.equal(216,deckWith2Packs.cards.length);
 	    });
     });
     
@@ -15,7 +15,7 @@ describe('Deck', function() {
         it('should add a card in deck', function() {
         	var actualDeck = deck.create(1);
         	deck.add(actualDeck,card.createCard(0,"red"));
-        	assert.equal(77,actualDeck.cards.length);
+        	assert.equal(109,actualDeck.cards.length);
 	    });
     });
 
@@ -23,14 +23,14 @@ describe('Deck', function() {
         it('should draw a card from deck', function() {
         	var actualDeck = deck.create(1);
         	deck.draw(actualDeck);
-        	assert.equal(75,actualDeck.cards.length);
+        	assert.equal(107,actualDeck.cards.length);
 	    });
     });
 
     describe('#lookAtLast', function() {
         it('should give a last card of deck', function() {
         	var actualDeck = deck.create(1);
-        	var expected = {"sign":"9","value":9,"color":"green"};
+        	var expected = card.createCard("DrawFour","black");
         	assert.deepEqual(expected,deck.lookAtLast(actualDeck));
 	    });
     });
@@ -55,7 +55,7 @@ describe('Deck', function() {
         	var deck2 = deck.create(1);
         	deck.addAll(deck2,deck1.cards);
 
-        	assert.equal(152,deck2.cards.length);
+        	assert.equal(216,deck2.cards.length);
 	    });
     });
 
@@ -63,7 +63,7 @@ describe('Deck', function() {
         it('should keep the last card and draw all other cards', function() {
         	var deck1 = deck.create(1);
             var drawnCards = deck.drawAllButLast(deck1);
-        	assert.equal(75,drawnCards.length);
+        	assert.equal(107,drawnCards.length);
 	    });
     });
 
