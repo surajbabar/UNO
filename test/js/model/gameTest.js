@@ -1,7 +1,7 @@
 var assert = require("assert");
-var game = require("../../../js/model/game.js").game;
-var card = require("../../../js/model/card.js").card;
-var player = require("../../../js/model/player.js").player;
+var game = require("../../../src/js/model/game.js").game;
+var card = require("../../../src/js/model/card.js").card;
+var player = require("../../../src/js/model/player.js").player;
 
 var gm;
 var players;

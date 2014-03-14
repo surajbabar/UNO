@@ -1,6 +1,6 @@
 var assert = require("assert");
-var player = require("../../../js/model/player.js").player;
-var card = require("../../../js/model/card.js").card;
+var player = require("../../../src/js/model/player.js").player;
+var card = require("../../../src/js/model/card.js").card;
 
 describe('Player', function(){
   describe('#createPlayer', function(){

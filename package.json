@@ -1,6 +1,6 @@
 {
   "name": "UNO",
-  "main": "index.html",
+  "main": "src/view/game-start.html",
   "window":{
     "width":1000,
     "height":800,
