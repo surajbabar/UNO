@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Game Master</title>
+    <script type="text/javascript">
+        window.gui = require('nw.gui');
+
+        checkFile = function()
+        {
+            var arg = window.gui.App.argv[1];
+            if (arg)
+                window.location = arg;
+        }
+    </script>
+    <script type="text/javascript" src="../../lib/angular.min.js"></script>
+    <script type="text/javascript" src="../js/controller/master-controller.js"></script>
+</head>
+
+<body onload="checkFile()">
+<div ng-app="uno">
+    <div ng-controller="startCtrl">
+        <form ng-submit="createGame()">
+            Packs: <input type="text" ng-model="noOfPacks"/></br>
+            Players: <input type="text" ng-model="noOfPlayers"/></br>
+            <input type="submit" value="Create Game"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
