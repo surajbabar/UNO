@@ -18,9 +18,18 @@ describe('Card', function(){
 	})
 
 	describe('#getCardPack', function(){
-		it('should give three packa of 108 cards each', function(){
+		it('should give three pack of 108 cards each', function(){
 			var cards = card.getCardPack(3);
 			assert.equal(108 * 3,cards.length);
 		})
 	})
+
+	describe('#getPoints', function(){
+		it('should give points of given card accordingly', function(){
+			var blueCard = card.createCard("Reverse","blue");
+			var wild = card.createCard("Wild","black");
+			assert.equal(20,card.getPoints(blueCard));
+			assert.equal(50,card.getPoints(wild));
+		})
+	})	
 })

@@ -10,7 +10,7 @@ deck.shuffle = function(dck){
 };
 
 deck.draw = function(dck){
-	dck.cards.splice(0,1); //removes first card
+	return dck.cards.splice(0,1); //removes first card
 };
 
 deck.add = function(dck,card){
