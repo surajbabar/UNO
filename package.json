@@ -1,6 +1,6 @@
 {
   "name": "UNO",
-  "main": "src/view/start-game.html",
+  "main": "src/view/join-game.html",
   "window":{
     "width":1000,
     "height":800,

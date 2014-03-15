@@ -1,0 +1,37 @@
+<html ng-app ="Uno">
+    <head>
+        <link rel="stylesheet" href="styles/player-screen.css"/>
+        <title>{{$scope.playerName}}</title>
+    </head>
+    <body>
+        <div id="otherPlayers" ng-controller="otherPlayers" ng-submit="catchPlayer()">
+            <scrollbar>
+                <div ng-repeat-start="player in $scope.players">
+                     <input type="submit" value = "{{player.name}}:{{player.noOfCards}}"/>
+                </div>
+            </scrollbar>
+        </div>
+
+        <div id="activityLog">
+            <label>activity</label>
+
+        </div>
+        <div id="cards">
+            <label>cards</label>
+
+        </div>
+        <div id="drawCards">
+            <label>drawcards</label>
+
+        </div>
+        <div id="openPile">
+            <label>open card</label>
+
+        </div>
+        <div id="hint">
+            <label>hint</label>
+
+        </div>
+
+    </body>
+</html>

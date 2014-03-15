@@ -1,0 +1,48 @@
+#otherPlayers{
+    position:fixed;
+    left: 10;
+    top:10;
+    height: 100;
+    width: 400;
+    background-color: darkslategrey;
+}
+#activityLog{
+    position:fixed;
+    left: 650;
+    top:10;
+    height: 500;
+    width: 200;
+    background-color: darkslategrey;
+}
+#cards{
+    position:fixed;
+    left: 10;
+    top:350;
+    height: 100;
+    width: 400;
+    background-color: darkslategrey;
+}
+#drawCards{
+    position:fixed;
+    left: 10;
+    top:200;
+    height: 100;
+    width: 100;
+    background-color: darkslategrey;
+}
+#openPile{
+    position:fixed;
+    left: 120;
+    top:200;
+    height: 100;
+    width: 100;
+    background-color: darkslategrey;
+}
+#hint{
+    position:fixed;
+    left: 10;
+    top:310;
+    height: 30;
+    width: 300;
+    background-color: darkslategrey;
+}
