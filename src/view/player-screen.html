@@ -1,35 +1,37 @@
-<html ng-app ="Uno">
-    <head>
+<html ng-app ="player-screen">
+    <head  ng-controller="initial">
+        <script src="../../lib/angular.min.js"></script>
         <link rel="stylesheet" href="styles/player-screen.css"/>
-        <title>{{$scope.playerName}}</title>
+        <script src="../../src/js/controller/player-controller.js"></script>
+        <title>{{playerName}}</title>
     </head>
-    <body>
-        <div id="otherPlayers" ng-controller="otherPlayers" ng-submit="catchPlayer()">
-            <scrollbar>
-                <div ng-repeat-start="player in $scope.players">
-                     <input type="submit" value = "{{player.name}}:{{player.noOfCards}}"/>
-                </div>
-            </scrollbar>
+    <body ng-controller="otherPlayers">
+        <div  id ="otherPlayers" ng-submit="catchPlayer()">
+            <div ng-repeat="player in players" >
+                <input type="submit" class ="playerName" value = "{{player.name}}:{{player.noOfCards}}"/>
+            </div>
         </div>
 
         <div id="activityLog">
-            <label>activity</label>
-
+            <textarea cols="20" rows="40">{{activityLog}}</textarea>
         </div>
+
         <div id="cards">
-            <label>cards</label>
+            <div ng-repeat="card in myCards">
+            <input type="submit" class ="card" value = "{{card.sign}}"/>
+            </div>
 
         </div>
         <div id="drawCards">
-            <label>drawcards</label>
-
+           <button>draw</button>
         </div>
-        <div id="openPile">
-            <label>open card</label>
 
+        <div id="openPile" style="text-align: center">
+            <label class="card">{{openCard.sign}}</label>
         </div>
+
         <div id="hint">
-            <label>hint</label>
+            <text>{{hint}}</text>
 
         </div>
 
