@@ -9,14 +9,15 @@ uno.controller('startCtrl', function ($scope) {
         server.listen(8080);
 
         server.on('connection', function (socket) {
-            if (sockets.length == $scope.noOfPlayers)
+            if (sockets.length == $scope.noOfPlayers) {
                 return;
+            }
             sockets.push(socket);
+            console.log('got '+sockets.length+' connections out of '+$scope.noOfPlayers);
             if (sockets.length == $scope.noOfPlayers) {
                 sockets.forEach(function (clientSocket) {
                     clientSocket.write('start');
                 });
-                console.log('all connections got');
             }
         });
     }

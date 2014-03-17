@@ -11,20 +11,22 @@ uno.service('playerService',function(){
     }
 })
 
-uno.controller('joinCtrl',function($scope,$location,playerService){
+uno.controller('joinCtrl',function($scope,$location,$route,playerService){
     $scope.masterName = "127.0.0.1";
     $scope.playerName = "me";
-    window.title
-    $scope.joinGame = function(){
-        var client = net.connect({port: 8080, host: $scope.masterName});
-        client.on('data',function(data){
+    var client;
+    $scope.joinGame = function () {
+        client = net.connect({port: 8080, host: $scope.masterName});
+        client.on('data', function (data) {
             playerService.setData(data);
-            $location.path('player');
+            $location.url('player');
+            $route.reload();
         });
-    }
+    };
 });
 
 uno.controller('playerCtrl',function($scope,playerService){
+    console.log(playerService.getData());
     $scope.players=[{name:"suraj",noOfCards:5},{name:"mritunjay",noOfCards:5},{name:"suraj",noOfCards:5},{name:"mritunjay",noOfCards:5}];
     $scope.activityLog="sdgsxdfghjkjhgf";
     $scope.myCards=[{color:"red",sign:"4"},{color:"red",sign:"4"},{color:"red",sign:"4"},{color:"red",sign:"4"},{color:"red",sign:"4"}];
