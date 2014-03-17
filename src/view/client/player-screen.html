@@ -1,3 +1,30 @@
-<div>
-    <h1>{{name}}</h1>
+<div id="board" ng-controller="playerCtrl">
+    <div id="otherPlayers" ng-submit="catchPlayer()">
+        <div ng-repeat="player in players">
+            <input type="submit" class="playerName" value="{{player.name}}:{{player.noOfCards}}"/>
+        </div>
+    </div>
+
+    <div id="activityLog">
+        <textarea cols="20" rows="40">{{activityLog}}</textarea>
+    </div>
+
+    <div id="cards">
+        <div ng-repeat="card in myCards">
+            <input type="submit" class="card" value="{{card.sign}}"/>
+        </div>
+
+    </div>
+    <div id="drawCards">
+        <button>draw</button>
+    </div>
+
+    <div id="openPile" style="text-align: center">
+        <label class="card">{{openCard.sign}}</label>
+    </div>
+
+    <div id="hint">
+        <text>{{hint}}</text>
+
+    </div>
 </div>

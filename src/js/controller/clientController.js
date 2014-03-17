@@ -25,5 +25,16 @@ uno.controller('joinCtrl',function($scope,$location,playerService){
 });
 
 uno.controller('playerCtrl',function($scope,playerService){
-    $scope.name = "me";
+    $scope.players=[{name:"suraj",noOfCards:5},{name:"mritunjay",noOfCards:5},{name:"suraj",noOfCards:5},{name:"mritunjay",noOfCards:5}];
+    $scope.activityLog="sdgsxdfghjkjhgf";
+    $scope.myCards=[{color:"red",sign:"4"},{color:"red",sign:"4"},{color:"red",sign:"4"},{color:"red",sign:"4"},{color:"red",sign:"4"}];
+    var update = function(snapshot){
+        $scope.activityLog=$scope.activityLog+'\n'+snapshot.currentTurnLog;
+        $scope.openCard=snapshot.openCard;
+        $scope.hint=snapshot.hint;
+
+    }
+    for(var i=0;i<15;i++){
+        update({currentTurnLog:"sadf",openCard:{sign:'32'},hint:"play a red or 3"});
+    }
 })

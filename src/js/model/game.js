@@ -162,6 +162,7 @@ game.populate = function(snapshot,plyr) {
     snapshot.runningColor = runningColor;
     snapshot.drawTwoRun = drawTwoRun;
     snapshot.currentTurnLog = log[log.length-1];
+    snapshot.hint="";//hint is not done yet
 }
 
 game.playCard = function(plyr,playedCard,newColor) {
