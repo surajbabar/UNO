@@ -1,5 +1,5 @@
 var assert = require("assert");
-var card = require("../../../src/js/model/card.js").card;
+var card = require("card.js").card;
 
 describe('Card', function(){
 	describe('#creaetCard', function(){

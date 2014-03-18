@@ -1,5 +1,5 @@
-var deck =require('../../../src/js/model/deck.js').deck;
-var card =require('../../../src/js/model/card.js').card;
+var deck =require('deck.js').deck;
+var card =require('card.js').card;
 var assert =require('assert');
 
 describe('Deck', function() {
