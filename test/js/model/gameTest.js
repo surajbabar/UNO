@@ -13,7 +13,7 @@ describe('Game',function () {
         players = [];
         players.push(player.createPlayer('me'));
         players.push(player.createPlayer('you'));
-        players.push(player.createPlayer('somone'));
+        players.push(player.createPlayer('someone'));
         game = require('game').createGame(1,players);
         game.initialize();
     });
@@ -36,21 +36,7 @@ describe('Game',function () {
     describe('#populate',function(){
         it('should populate the snapshot of game status',function(){
             game.populate(snapshot,players[0]);
-            assert.equal(0,snapshot.currentPlayerIndex);
-            assert.equal(0,snapshot.drawTwoRun);
-            assert.equal(true,snapshot.isInAscendingOrder);
             assert.equal(7,snapshot.myCards.length);
-        })
-    })
-
-    describe('#playCard',function(){
-        it('should skip next player when played card is Skip',function(){
-            var skipCard = card.createCard("Skip","blue");
-            game.populate(snapshot,players[0]);
-            var currentPlayerIndex = snapshot.currentPlayerIndex;
-            game.playCard(players[0],skipCard,'blue');
-            game.populate(snapshot,players[0]);
-            assert.equal(currentPlayerIndex+2,snapshot.currentPlayerIndex);
         })
     })
 
@@ -109,18 +95,5 @@ describe('Game',function () {
             assert.equal(players[0].name+' drew a card\n',snapshot.currentTurnLog.slice(9));
         })
     })
-
-    // describe('#playCard',function(){
-    // 	it('should give cards to next player according to drawTwoRun',function(){
-    // 		var drawTwo = card.createCard("DrawTwo","blue");
-    // 		game.populate(snapshot,players[1]);
-    // 		console.log(snapshot.drawTwoRun)
-    // 		var noOfCards = snapshot.myCards.length;
-    // 		var drawTwoRun = snapshot.drawTwoRun;
-    // 		game.playCard(players[0],drawTwo,'blue');
-    // 		game.populate(snapshot,players[1]);
-    // 		assert.equal(noOfCards+drawTwoRun+2,snapshot.myCards.length);
-    // 	})
-    // })
 
 })

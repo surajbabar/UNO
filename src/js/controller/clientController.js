@@ -51,6 +51,5 @@ var update = function (snapshot, $scope) {
 
 uno.controller('playerCtrl', function ($scope, playerService) {
     var snapshot = JSON.parse(playerService.getData());
-    console.log(snapshot);
     update(snapshot, $scope);
 })
