@@ -1,7 +1,7 @@
 <div id="board" ng-controller="playerCtrl">
-    <div id="otherPlayers" ng-submit="catchPlayer()">
+    <div id="otherPlayers">
         <div ng-repeat="player in players">
-            <input type="submit" class="playerName" value="{{player.name}}:{{player.noOfCards}}"/>
+            <button class="catchButton" ng-click="catchPlayer()">{{player.name}}:{{player.noOfCards}}</button>
         </div>
     </div>
 
