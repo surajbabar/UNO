@@ -1,9 +1,8 @@
 var assert = require("assert");
-var game = require("game.js").game;
 var card = require("card.js").card;
 var player = require("player.js").player;
 
-var gm;
+var game;
 var players;
 var snapshot;
 
@@ -15,13 +14,13 @@ describe('Game',function () {
         players.push(player.createPlayer('me'));
         players.push(player.createPlayer('you'));
         players.push(player.createPlayer('somone'));
-        gm = game.createGame(1,players);
-        gm.initialize();
+        game = require('game').createGame(1,players);
+        game.initialize();
     });
 
     describe('#createGame',function(){
         it('should start a game for given players',function(){
-            assert.deepEqual(gm.players,players);
+            assert.deepEqual(game.players,players);
         })
     })
 
