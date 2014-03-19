@@ -1,6 +1,7 @@
 var uno = angular.module('clientController', []);
 var net = require('net');
 var gui = require('nw.gui');
+var cardModel = require('card.js').card;
 
 uno.service('playerService', function ($rootScope) {
     this.playerData = {data: '', socket: ''};
@@ -38,6 +39,7 @@ uno.controller('joinCtrl', function ($scope, $location, $route, playerService) {
             $route.reload();
             gui.Window.get().show();
             gui.Window.get().title = $scope.playerName;
+            console.log(Object.keys(data));
         }
 
         client.on('data', function (data) {
@@ -77,15 +79,21 @@ uno.controller('playerCtrl', function ($scope, playerService) {
     $scope.hint = "";
     var channel = playerService.getSocket();
 
-    update(playerService.getData(), $scope);
+    var snapshot = playerService.getData();
 
+    update(snapshot, $scope);
     $scope.playCard = function (card) {
+//        if (!cardModel.canFollowCard(card, snapshot.openCard, snapshot.drawTwoRun, snapshot.runningColor)) {
+//            alert("you cann't play this card");
+//            return;
+//        }
         var playedCardInfo = {type: 'playCardAction', card: card, color: 'blue'};
         channel.write(JSON.stringify(playedCardInfo));
     }
 
     $scope.$on('dataChanged', function (data) {
-        update(playerService.getData(), $scope);
+        snapshot = playerService.getData();
+        update(snapshot, $scope);
         $scope.$apply();
     })
 })

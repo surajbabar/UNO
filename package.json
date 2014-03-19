@@ -2,7 +2,7 @@
   "name": "UNO",
   "main": "src/view/index.html",
   "window":{
-    "width":960,
+    "width":1000,
     "height":700,
     "position":"center"
   }
