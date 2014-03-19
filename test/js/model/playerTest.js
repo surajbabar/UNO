@@ -107,7 +107,7 @@ describe('Player', function(){
   describe('#generateResult',function(){
       it('should give player name,left cards and points as result',function(){
         var me = player.createPlayer('me');
-         var drawFour = card.createCard("DrawFour","black");
+         var drawFour = card.createCard("+4","black");
          var blueCard = card.createCard("Skip","blue");
 
          player.takeCard(me,drawFour);

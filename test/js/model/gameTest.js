@@ -52,8 +52,8 @@ describe('Game',function () {
     })
 
     describe('#playCard',function(){
-        it('should increment the drawTwoRun by 1 when played card is DrawTwo',function(){
-            var drawTwo = card.createCard("DrawTwo","blue");
+        it('should increment the drawTwoRun by 1 when played card is +2',function(){
+            var drawTwo = card.createCard("+2","blue");
             game.populate(snapshot,players[0]);
             var drawTwoRun = snapshot.drawTwoRun;
             game.playCard(players[0],drawTwo,'blue');
@@ -64,16 +64,16 @@ describe('Game',function () {
 
     describe('#playCard',function(){
         it('should update the log of the game',function(){
-            var drawTwo = card.createCard("DrawTwo","blue");
+            var drawTwo = card.createCard("+2","blue");
             game.playCard(players[0],drawTwo,'blue');
             game.populate(snapshot,players[0]);
-            assert.equal(players[0].name+' played a blue DrawTwo\n',snapshot.currentTurnLog.slice(9));
+            assert.equal(players[0].name+' played a blue +2\n',snapshot.currentTurnLog.slice(9));
         })
     })
 
     describe('#initialize',function(){
         it('should update the log of the game',function(){
-            var drawTwo = card.createCard("DrawTwo","blue");
+            var drawTwo = card.createCard("+2","blue");
             game.populate(snapshot,players[0]);
             assert.equal('Game starts with',snapshot.currentTurnLog.slice(10,26));
         })
@@ -81,10 +81,10 @@ describe('Game',function () {
 
     describe('#playCard',function(){
         it('should update the log of the game',function(){
-            var drawTwo = card.createCard("DrawTwo","blue");
+            var drawTwo = card.createCard("+2","blue");
             game.playCard(players[0],drawTwo,'blue');
             game.populate(snapshot,players[0]);
-            assert.equal(players[0].name+' played a blue DrawTwo\n',snapshot.currentTurnLog.slice(9));
+            assert.equal(players[0].name+' played a blue +2\n',snapshot.currentTurnLog.slice(9));
         })
     })
 

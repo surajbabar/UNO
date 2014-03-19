@@ -1,5 +1,5 @@
 var uno = angular.module('uno', []);
-var gameMaster = require('game-master.js').gameMaster;
+var gameMaster = require('game-master.js');
 var net = require('net');
 
 

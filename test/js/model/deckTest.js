@@ -38,7 +38,7 @@ describe('Deck', function () {
     describe('#lookAtLast', function () {
         it('should give a last card of deck', function () {
             var actualDeck = deck.create(1);
-            var expected = card.createCard("DrawFour", "black");
+            var expected = card.createCard("+4", "black");
             assert.deepEqual(expected, deck.lookAtLast(actualDeck));
         });
     });
