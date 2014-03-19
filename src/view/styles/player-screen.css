@@ -4,6 +4,14 @@
     background-color: gray;
 }
 
+.turn{
+    margin-right: 30px;
+    height: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 150%;
+}
+
 #otherPlayers {
     position: fixed;
     left: 10px;
@@ -26,7 +34,6 @@
     width: 80px;
     float: left;
     font-weight: bold;
-
 }
 
 #activityLog {
@@ -42,7 +49,7 @@
     left: 40px;
     top: 500px;
     height: 120px;
-    width: 700px;
+    width: 600px;
     overflow-x: auto;
     display: inline;
 }
@@ -59,7 +66,6 @@
     top: 200px;
     text-align: center;
 }
-
 
 #hint {
     position: fixed;

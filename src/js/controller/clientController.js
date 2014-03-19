@@ -37,6 +37,7 @@ uno.controller('joinCtrl', function ($scope, $location, $route, playerService) {
             $location.url('player');
             $route.reload();
             gui.Window.get().show();
+            gui.Window.get().title = $scope.playerName;
         }
 
         client.on('data', function (data) {
@@ -63,9 +64,12 @@ var update = function (snapshot, $scope) {
     $scope.myCards = setProperColors(snapshot.myCards);
     $scope.activityLog = $scope.activityLog + '\n' + snapshot.currentTurnLog;
     $scope.openCard = snapshot.openCard;
-    $scope.openCard.foreColor = $scope.openCard.color == "blue" || $scope.openCard.color == "black" ? "white" : "black";
+    var foreColor = $scope.openCard.color == "blue" || $scope.openCard.color == "black" ? "white" : "black";
+    $scope.openPileProp = {background: snapshot.openCard.color, color: foreColor};
     $scope.hint = snapshot.hint;
     $scope.directionSign = snapshot.isInAscendingOrder ? "=>" : "<=";
+    $scope.currentPlayer = snapshot.playerSummaries[snapshot.currentPlayerIndex].name;
+    $scope.enable = snapshot.playerSummaries[snapshot.currentPlayerIndex] != snapshot.playerSummaries[snapshot.myPlayerIndex];
 }
 
 uno.controller('playerCtrl', function ($scope, playerService) {
@@ -83,6 +87,5 @@ uno.controller('playerCtrl', function ($scope, playerService) {
     $scope.$on('dataChanged', function (data) {
         update(playerService.getData(), $scope);
         $scope.$apply();
-        console.log($scope.openCard);
     })
 })

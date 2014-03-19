@@ -1,6 +1,7 @@
 <div id="board" ng-controller="playerCtrl">
     <div id="otherPlayers">
-        <label class="direction">{{directionSign}}</label>
+        <label class="turn">{{directionSign}}</label>
+        <label class="turn">{{currentPlayer}}'s turn</label>
 
         <div ng-repeat="player in players">
             <button class="catchButton" ng-click="catchPlayer()">{{player.name}}:{{player.noOfCards}}</button>
@@ -13,18 +14,18 @@
 
     <div id="cards">
         <div ng-repeat="card in myCards">
-            <button class="card" ng-click="playCard(card)"
+            <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}}"
                     ng-style="{background:'{{card.color}}',color:'{{card.foreColor}}'}">{{card.sign}}
             </button>
         </div>
-
     </div>
+
     <div id="drawCards">
         <button class="card">draw</button>
     </div>
 
     <div class="card" id="openPile">
-        <button class="card" ng-style="{background:'{{openCard.color}}',color:'{{openCard.foreColor}}', disabled:true}">
+        <button class="card" ng-style="openPileProp" disabled>
             {{openCard.sign}}
         </button>
     </div>
