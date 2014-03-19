@@ -2,10 +2,11 @@ var uno = angular.module('clientController', []);
 var net = require('net');
 var gui = require('nw.gui');
 
-uno.service('playerService', function () {
+uno.service('playerService', function ($rootScope) {
     this.playerData = {data: '', socket: ''};
     this.changeData = function (value) {
         this.playerData.data = value;
+        $rootScope.$broadcast('dataChanged');
     }
     this.getData = function () {
         return this.playerData.data;
@@ -39,18 +40,20 @@ uno.controller('joinCtrl', function ($scope, $location, $route, playerService) {
         }
 
         client.on('data', function (data) {
-            switchToPlayerScreen(data);
+            var message = JSON.parse(data);
             if (firstTimeData) {
                 firstTimeData = false;
+                switchToPlayerScreen(message);
             }
             else {
-                playerService.changeData(data);
+                playerService.changeData(message);
             }
         });
     };
 });
 
 var update = function (snapshot, $scope) {
+    console.log(snapshot);
     $scope.players = snapshot.playerSummaries;
     $scope.myCards = snapshot.myCards;
     $scope.activityLog = $scope.activityLog + '\n' + snapshot.currentTurnLog;
@@ -64,11 +67,14 @@ uno.controller('playerCtrl', function ($scope, playerService) {
     $scope.hint = "";
     var channel = playerService.getSocket();
 
-    var snapshot = JSON.parse(playerService.getData());
-    update(snapshot, $scope);
+    update(playerService.getData(), $scope);
 
     $scope.playCard = function (card) {
         var playedCardInfo = {type: 'playCardAction', card: card, color: 'blue'};
         channel.write(JSON.stringify(playedCardInfo));
     }
+
+    $scope.$on('dataChanged', function (data) {
+        update(playerService.getData(), $scope);
+    })
 })
