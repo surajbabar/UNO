@@ -13,7 +13,7 @@
 
     <div id="cards">
         <div ng-repeat="card in myCards">
-            <button class="card" ng-click="playCard(card)" ng-style="{background:'{{card.color}}'}">{{card.sign}}
+            <button class="card" ng-click="playCard(card)" ng-style="{background:'{{card.color}}',color:'{{card.foreColor}}'}">{{card.sign}}
             </button>
         </div>
 
@@ -22,8 +22,8 @@
         <button class="card">draw</button>
     </div>
 
-    <div class="card" id="openPile" ng-style = "{background:'{{openCard.color}}'}">
-        <label  >{{openCard.sign}}</label>
+    <div class="card" id="openPile">
+        <button class="card" ng-style="{background:'{{openCard.color}}',color:'{{openCard.foreColor}}', disabled:true}">{{openCard.sign}}</button>
     </div>
 
     <div id="hint">

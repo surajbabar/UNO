@@ -52,12 +52,19 @@ uno.controller('joinCtrl', function ($scope, $location, $route, playerService) {
     };
 });
 
+var setProperColors =function(myCards) {
+    myCards.forEach(function(card){
+        card.foreColor = card.color=="blue"||card.color=="black"? "white":"black";
+    });
+        return myCards;
+}
 var update = function (snapshot, $scope) {
     console.log(snapshot);
     $scope.players = snapshot.playerSummaries;
-    $scope.myCards = snapshot.myCards;
+    $scope.myCards = setProperColors(snapshot.myCards);
     $scope.activityLog = $scope.activityLog + '\n' + snapshot.currentTurnLog;
-    $scope.openCard = snapshot.openCard;
+    $scope.openCard =snapshot.openCard;
+    $scope.openCard.foreColor= $scope.openCard.color=="blue"||$scope.openCard.color=="black"? "white":"black";
     $scope.hint = snapshot.hint;
     $scope.directionSign = snapshot.isInAscendingOrder ? "=>" : "<=";
 }
