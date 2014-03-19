@@ -16,15 +16,16 @@
 
     </div>
     <div id="drawCards">
-        <button>draw</button>
+        <button class="card">draw</button>
     </div>
 
-    <div id="openPile" style="text-align: center">
-        <label class="card" ng-style = "{background:'{{openCard.color}}'}">{{openCard.sign}}</label>
+    <div class="card" id="openPile" ng-style = "{background:'{{openCard.color}}'}">
+        <label  >{{openCard.sign}}</label>
     </div>
 
     <div id="hint">
         <text>{{hint}}</text>
 
     </div>
+    <div> <button id = "uno">UNO</button> </div>
 </div>
