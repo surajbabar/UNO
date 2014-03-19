@@ -1,60 +1,70 @@
-#board{
-    width: 1000px;
+#board {
+    width: 950px;
     height: 700px;
+    background-color: gray;
 }
 
-#otherPlayers{
-    position:fixed;
+#otherPlayers {
+    position: fixed;
     left: 10px;
-    top:10px;
+    top: 10px;
     height: 40px;
-    width: 400px;
-    overflow-y: auto;
+    width: 600px;
     display: inline;
+}
+
+.catchButton {
+    float: left;
+    width: 150px;
+    height: 40px;
+    font-size: 105%;
+}
+
+.card {
+    height: 50px;
+    width: 50px;
+    float: left;
 
 }
-.catchButton{
-    float:left;
-}
-.card{
-    float:left;
 
-}
-#activityLog{
-    position:fixed;
+#activityLog {
+    position: fixed;
     left: 650px;
-    top:10px;
+    top: 10px;
     height: 500px;
     width: 200px;
 }
-#cards{
-    position:fixed;
+
+#cards {
+    position: fixed;
     left: 10px;
-    top:350px;
+    top: 350px;
     height: 100px;
     width: 400px;
     overflow-x: auto;
     display: inline;
 }
-#drawCards{
-    position:fixed;
+
+#drawCards {
+    position: fixed;
     left: 10px;
-    top:200px;
-    height: 100px;
-    width: 100px;
-}
-#openPile{
-    position:fixed;
-    left: 120px;
-    top:200px;
+    top: 200px;
     height: 100px;
     width: 100px;
 }
 
-#hint{
-    position:fixed;
+#openPile {
+    position: fixed;
+    left: 120px;
+    top: 200px;
+    height: 100px;
+    width: 100px;
+}
+
+#hint {
+    position: fixed;
     left: 10px;
-    top:310px;
+    top: 310px;
     height: 30px;
     width: 300px;
 }
