@@ -13,6 +13,12 @@
     display: inline;
 }
 
+.direction{
+    font-size: 200%;
+    color: white;
+    font-weight: bold;
+}
+
 .catchButton {
     float: left;
     width: 150px;
@@ -24,7 +30,6 @@
     height: 50px;
     width: 50px;
     float: left;
-
 }
 
 #activityLog {
