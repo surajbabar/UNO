@@ -1,7 +1,9 @@
 <div id="board" ng-controller="playerCtrl">
     <div id="otherPlayers">
+        <label class="direction">{{directionSign}}</label>
+
         <div ng-repeat="player in players">
-            <button class="catchButton"  ng-click="catchPlayer()">{{player.name}}:{{player.noOfCards}}</button>
+            <button class="catchButton" ng-click="catchPlayer()">{{player.name}}:{{player.noOfCards}}</button>
         </div>
     </div>
 
@@ -11,7 +13,8 @@
 
     <div id="cards">
         <div ng-repeat="card in myCards">
-            <button class="card" ng-style = "{background:'{{card.color}}'}">{{card.sign}}</button>
+            <button class="card" ng-click="playCard(card)" ng-style="{background:'{{card.color}}'}">{{card.sign}}
+            </button>
         </div>
 
     </div>
