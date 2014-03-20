@@ -3,7 +3,7 @@
   "main": "src/view/index.html",
   "window":{
     "width":1000,
-    "height":700,
+    "height":725,
     "position":"center"
   }
 }
