@@ -53,9 +53,10 @@
     position: fixed;
     left: 40px;
     top: 500px;
-    height: 120px;
-    width: 600px;
+    height:140px;
+    width:600px;
     overflow-x: auto;
+    overflow-y: hidden;
     display: inline;
 }
 

@@ -96,6 +96,14 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         channel.write(JSON.stringify(playedCardInfo));
     }
 
+    $scope.$watch("myCards", function() {
+        $scope.numberOfCards = function() {
+            return {
+                width: ($scope.myCards.length * 85 * 2) + 'px',
+            };
+        };
+    });
+    
     $scope.drawCard = function () {
         if (snapshot.drawTwoRun > 0) {
             channel.write(JSON.stringify({type: 'drawTwoAction'}));
