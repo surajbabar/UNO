@@ -96,7 +96,6 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         channel.write(JSON.stringify(playedCardInfo));
     }
 
-<<<<<<< HEAD
     $scope.$watch("myCards", function() {
         $scope.numberOfCards = function() {
             return {
@@ -104,7 +103,7 @@ uno.controller('playerCtrl', function ($scope, playerService) {
             };
         };
     });
-=======
+    
     $scope.drawCard = function () {
         if (snapshot.drawTwoRun > 0) {
             channel.write(JSON.stringify({type: 'drawTwoAction'}));
@@ -116,7 +115,6 @@ uno.controller('playerCtrl', function ($scope, playerService) {
             }, 5000);
         }
     }
->>>>>>> 412956dfe17713889254c25f8c8cf162d0a83908
 
     $scope.$on('dataChanged', function (data) {
         snapshot = playerService.getData();
