@@ -93,13 +93,17 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         if (timeout)
             clearTimeout(timeout);
         var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
+        if(card.color=="black"){
+            var color = prompt('please choose a color');
+            playedCardInfo.color = color.toLowerCase();
+        }
         channel.write(JSON.stringify(playedCardInfo));
     }
 
     $scope.$watch("myCards", function() {
         $scope.numberOfCards = function() {
             return {
-                width: ($scope.myCards.length * 85 * 2) + 'px',
+                width: ($scope.myCards.length * 85 * 2) + 'px'
             };
         };
     });
