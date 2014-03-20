@@ -93,6 +93,14 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         channel.write(JSON.stringify(playedCardInfo));
     }
 
+    $scope.$watch("myCards", function() {
+        $scope.numberOfCards = function() {
+            return {
+                width: ($scope.myCards.length * 85 * 2) + 'px',
+            };
+        };
+    });
+
     $scope.$on('dataChanged', function (data) {
         snapshot = playerService.getData();
         update(snapshot, $scope);

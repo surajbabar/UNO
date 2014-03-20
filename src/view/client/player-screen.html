@@ -13,10 +13,11 @@
     </div>
 
     <div id="cards">
-        <div ng-repeat="card in myCards">
+        <div ng-repeat="card in myCards" ng-style="numberOfCards()">
             <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}}"
                     ng-style="{background:'{{card.color}}',color:'{{card.foreColor}}'}">{{card.sign}}
             </button>
+            
         </div>
     </div>
 
