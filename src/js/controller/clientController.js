@@ -44,9 +44,13 @@ uno.controller('joinCtrl', function ($scope, $location, $route, playerService) {
 
         client.on('data', function (data) {
             var message = JSON.parse(data);
+
             if (firstTimeData) {
                 firstTimeData = false;
                 switchToPlayerScreen(message);
+            }
+            if (message.type == 'gameResult') {
+                console.log(message);
             }
             else {
                 playerService.changeData(message);
@@ -83,31 +87,33 @@ uno.controller('playerCtrl', function ($scope, playerService) {
 
     var snapshot = playerService.getData();
     update(snapshot, $scope);
-    var timeout;
 
-    $scope.playCard = function (card) {
-        if (!cardModel.canFollowCard(card, snapshot)) {
-            alert("you can't play this card");
-            return;
-        }
-        if (timeout)
-            clearTimeout(timeout);
-        var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
-        if(card.color=="black"){
-            var color = prompt('please choose a color');
-            playedCardInfo.color = color.toLowerCase();
-        }
-        channel.write(JSON.stringify(playedCardInfo));
-    }
-
-    $scope.$watch("myCards", function() {
-        $scope.numberOfCards = function() {
+    $scope.$watch("myCards", function () {
+        $scope.numberOfCards = function () {
             return {
                 width: ($scope.myCards.length * 85 * 2) + 'px'
             };
         };
     });
-    
+
+    var timeout;
+    $scope.playCard = function (card) {
+        if (!cardModel.canFollowCard(card, snapshot)) {
+            alert("you can't play this card");
+            return;
+        }
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
+        if (card.color == "black") {
+            var color = prompt('please choose a color');
+            playedCardInfo.color = color && color.toLowerCase() || playedCardInfo.color;
+        }
+        channel.write(JSON.stringify(playedCardInfo));
+    }
+
+
     $scope.drawCard = function () {
         if (snapshot.drawTwoRun > 0) {
             channel.write(JSON.stringify({type: 'drawTwoAction'}));
