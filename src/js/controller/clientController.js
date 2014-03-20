@@ -73,6 +73,7 @@ var update = function (snapshot, $scope) {
     $scope.directionSign = snapshot.isInAscendingOrder ? "=>" : "<=";
     $scope.currentPlayer = snapshot.playerSummaries[snapshot.currentPlayerIndex].name;
     $scope.enable = snapshot.playerSummaries[snapshot.currentPlayerIndex] != snapshot.playerSummaries[snapshot.myPlayerIndex];
+    $scope.disableDraw = snapshot.disableDraw || $scope.enable;
 }
 
 uno.controller('playerCtrl', function ($scope, playerService) {
@@ -81,16 +82,30 @@ uno.controller('playerCtrl', function ($scope, playerService) {
     var channel = playerService.getSocket();
 
     var snapshot = playerService.getData();
-
     update(snapshot, $scope);
+    var timeout;
+
     $scope.playCard = function (card) {
-        console.log(card, snapshot);
         if (!cardModel.canFollowCard(card, snapshot)) {
-            alert("you cann't play this card");
+            alert("you can't play this card");
             return;
         }
+        if (timeout)
+            clearTimeout(timeout);
         var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
         channel.write(JSON.stringify(playedCardInfo));
+    }
+
+    $scope.drawCard = function () {
+        if (snapshot.drawTwoRun > 0) {
+            channel.write(JSON.stringify({type: 'drawTwoAction'}));
+        }
+        else {
+            channel.write(JSON.stringify({type: 'drawAction'}));
+            timeout = setTimeout(function () {
+                channel.write(JSON.stringify({type: 'noActionAfterDraw'}));
+            }, 5000);
+        }
     }
 
     $scope.$on('dataChanged', function (data) {
