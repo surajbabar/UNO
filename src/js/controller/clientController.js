@@ -5,6 +5,7 @@ var cardModel = require('card.js').card;
 
 uno.service('playerService', function ($rootScope) {
     this.playerData = {data: '', socket: ''};
+
     this.changeData = function (value) {
         this.playerData.data = value;
         $rootScope.$broadcast('dataChanged');
@@ -39,7 +40,6 @@ uno.controller('joinCtrl', function ($scope, $location, $route, playerService) {
             $route.reload();
             gui.Window.get().show();
             gui.Window.get().title = $scope.playerName;
-            console.log(Object.keys(data));
         }
 
         client.on('data', function (data) {
@@ -52,6 +52,7 @@ uno.controller('joinCtrl', function ($scope, $location, $route, playerService) {
                 playerService.changeData(message);
             }
         });
+
     };
 });
 
@@ -83,11 +84,12 @@ uno.controller('playerCtrl', function ($scope, playerService) {
 
     update(snapshot, $scope);
     $scope.playCard = function (card) {
-//        if (!cardModel.canFollowCard(card, snapshot.openCard, snapshot.drawTwoRun, snapshot.runningColor)) {
-//            alert("you cann't play this card");
-//            return;
-//        }
-        var playedCardInfo = {type: 'playCardAction', card: card, color: 'blue'};
+        console.log(card, snapshot);
+        if (!cardModel.canFollowCard(card, snapshot)) {
+            alert("you cann't play this card");
+            return;
+        }
+        var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
         channel.write(JSON.stringify(playedCardInfo));
     }
 
