@@ -14,6 +14,10 @@ uno.config(['$routeProvider',
                 templateUrl: './player-screen.html',
                 controller: 'playerCtrl'
             }).
+            when('/result', {
+                templateUrl: './game-over.html',
+                controller: 'gameOverCtrl'
+            }).
             otherwise({
                 redirectTo: '/join'
             });

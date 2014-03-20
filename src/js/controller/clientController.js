@@ -4,20 +4,26 @@ var gui = require('nw.gui');
 var cardModel = require('card.js').card;
 
 uno.service('playerService', function ($rootScope) {
-    this.playerData = {data: '', socket: ''};
-
+    var playerData = {data: '', socket: ''};
+    var result = {};
     this.changeData = function (value) {
-        this.playerData.data = value;
+        playerData.data = value;
         $rootScope.$broadcast('dataChanged');
     }
     this.getData = function () {
-        return this.playerData.data;
+        return playerData.data;
     }
     this.setSocket = function (socket) {
-        this.playerData.socket = socket;
+        playerData.socket = socket;
     }
     this.getSocket = function () {
-        return this.playerData.socket;
+        return playerData.socket;
+    }
+    this.setGameResult = function (data) {
+        result = data;
+    }
+    this.getGameResult = function () {
+        return result;
     }
 })
 
@@ -50,7 +56,12 @@ uno.controller('joinCtrl', function ($scope, $location, $route, playerService) {
                 switchToPlayerScreen(message);
             }
             if (message.type == 'gameResult') {
-                console.log(message);
+                playerService.setGameResult(message);
+                gui.Window.get().hide();
+                $location.url('result');
+                $route.reload();
+                gui.Window.get().show();
+                gui.Window.get().title = "Game Result";
             }
             else {
                 playerService.changeData(message);
@@ -131,4 +142,11 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         update(snapshot, $scope);
         $scope.$apply();
     })
+})
+
+
+uno.controller('gameOverCtrl', function ($scope, playerService) {
+    var result = playerService.getGameResult();
+    console.log(result);
+    $scope.players = result.playerResults;
 })
