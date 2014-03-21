@@ -4,7 +4,7 @@
     background-color: gray;
 }
 
-.turn{
+.turn {
     margin-right: 30px;
     height: 30px;
     color: white;
@@ -44,7 +44,7 @@
     width: 250px;
 }
 
-#log{
+#log {
     font-size: 125%;
     text-align: justify;
 }
@@ -53,8 +53,8 @@
     position: fixed;
     left: 40px;
     top: 500px;
-    height:140px;
-    width:600px;
+    height: 140px;
+    width: 600px;
     overflow-x: auto;
     overflow-y: hidden;
     display: inline;
@@ -81,11 +81,27 @@
     width: 300px;
     font-size: 25px;
 }
+
 #uno {
     position: fixed;
-    left:650px;
-    top:520px;
+    left: 650px;
+    top: 520px;
     border-radius: 20px;
     font-size: 25px;
     padding: 10px;
+}
+
+#error {
+    position: fixed;
+    left: 500px;
+    top: 200px;
+    height: 120px;
+    width: 300px;
+}
+
+#errorText {
+    font-size: 150%;
+    height: 120px;
+    width: 200px;
+    background-color: rgb(255, 100, 100);
 }

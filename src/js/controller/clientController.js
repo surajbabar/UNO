@@ -99,6 +99,15 @@ uno.controller('playerCtrl', function ($scope, playerService) {
     var snapshot = playerService.getData();
     update(snapshot, $scope);
 
+    $scope.$watch("showWarning",function(){
+        if($scope.showWarning){
+            setTimeout(function () {
+                $scope.showWarning = false;
+                $scope.$apply();
+            }, 1000);
+        }
+    });
+
     $scope.$watch("myCards", function () {
         $scope.numberOfCards = function () {
             return {
@@ -110,7 +119,7 @@ uno.controller('playerCtrl', function ($scope, playerService) {
     var timeout;
     $scope.playCard = function (card) {
         if (!cardModel.canFollowCard(card, snapshot)) {
-            alert("you can't play this card");
+            $scope.showWarning = true;
             return;
         }
         if (timeout) {
