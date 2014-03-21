@@ -1,41 +1,53 @@
 <div id="board" ng-controller="playerCtrl">
-    <div id="otherPlayers">
-        <label class="turn">{{directionSign}}</label>
-        <label class="turn">{{currentPlayer}}'s turn</label>
+    <div id="playingBoard">
+        <div id="otherPlayers">
+            <label class="turn">{{directionSign}}</label>
+            <label class="turn">{{currentPlayer}}'s turn</label>
 
-        <div ng-repeat="player in players">
-            <button class="catchButton" ng-click="catchPlayer()">{{player.name}}:{{player.noOfCards}}</button>
+            <div ng-repeat="player in players">
+                <button class="catchButton" ng-disabled="openColorChooser" ng-click="catchPlayer()">
+                    {{player.name}}:{{player.noOfCards}}
+                </button>
+            </div>
         </div>
-    </div>
 
-        <textarea id="activityLog" cols="26" rows="41" onfocus="scrollDown(this)">{{activityLog}}</textarea>
-    <div id="cards">
-        <div ng-repeat="card in myCards" ng-style="numberOfCards()">
-            <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}}"
-                    ng-style="{background:'{{card.color}}',color:'{{card.foreColor}}'}">{{card.sign}}
+        <textarea id="activityLog" cols="26" rows="41" onfocus="scrollDown(this)" readonly>{{activityLog}}</textarea>
+
+        <div id="cards">
+            <div ng-repeat="card in myCards" ng-style="numberOfCards()">
+                <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}} || openColorChooser"
+                        ng-style="{background:'{{card.color}}',color:'{{card.foreColor}}'}">{{card.sign}}
+                </button>
+
+            </div>
+        </div>
+
+        <div id="drawCards">
+            <button class="card" ng-click="drawCard()" ng-disabled="disableDraw || openColorChooser">Draw</button>
+        </div>
+
+        <div class="card" id="openPile">
+            <button class="card" ng-style="openPileProp" disabled>
+                {{openCard.sign}}
             </button>
-            
         </div>
-    </div>
-
-    <div id="drawCards">
-        <button class="card" ng-click="drawCard()" ng-disabled="disableDraw">Draw</button>
-    </div>
-
-    <div class="card" id="openPile">
-        <button class="card" ng-style="openPileProp" disabled>
-            {{openCard.sign}}
-        </button>
-    </div>
 
         <textarea id="warning" ng-show="showWarning" cols="10" rows="10">
             {{warningMessage}}
         </textarea>
 
-    <div id="hint">
-        {{hint}}
+        <div id="hint">
+            {{hint}}
+        </div>
+        <div>
+            <button id="uno" ng-disabled="openColorChooser" ng-click="declareUno()">UNO</button>
+        </div>
     </div>
-    <div>
-        <button id="uno" ng-click="declareUno()">UNO</button>
+
+    <div id="colorChooser" ng-show="openColorChooser">
+        <button class="colorButton" ng-click=setColor('red') style="background:red"></button>
+        <button class="colorButton" ng-click=setColor('blue') style="background:blue"></button>
+        <button class="colorButton" ng-click=setColor('yellow') style="background:yellow"></button>
+        <button class="colorButton" ng-click=setColor('green') style="background:green"></button>
     </div>
 </div>

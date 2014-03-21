@@ -1,9 +1,12 @@
 {
-  "name": "UNO",
-  "main": "src/view/index.html",
-  "window":{
-    "width":1000,
-    "height":725,
-    "position":"center"
-  }
+    "name": "UNO",
+    "main": "src/view/index.html",
+    "window": {
+        "width": 1000,
+        "height": 725,
+        "position": "center"
+    },
+    "dependencies": {
+        "nodewebkit": "*"
+    }
 }

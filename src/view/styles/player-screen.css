@@ -84,6 +84,20 @@
     padding: 10px;
 }
 
+#colorChooser{
+    left: 550px;
+    top: 200px;
+    width: 200px;
+    height: 200px;
+    position: fixed;
+}
+
+.colorButton{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
 #warning {
     position: fixed;
     left: 500px;
