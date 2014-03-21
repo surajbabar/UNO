@@ -6,7 +6,10 @@ var net = require('net');
 uno.controller('startCtrl', function ($scope) {
     $scope.noOfPacks = 1;
     $scope.noOfPlayers = 1;
+	$scope.gameNotCreated = true;
+
     $scope.createGame = function(){
         gameMaster.startGameMaster($scope.noOfPacks,$scope.noOfPlayers);
+		$scope.gameNotCreated = false;
     }
 });

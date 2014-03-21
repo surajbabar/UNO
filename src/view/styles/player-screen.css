@@ -104,12 +104,13 @@
     top: 200px;
     background-color: rgb(255, 100, 100);
     font-size: 150%;
-    
+
 }
 #cardsLeft {
     position: fixed;
     height: 70px;
     width: 200px;
+    left:150px; 
     overflow-x: auto;
     overflow-y: hidden;
     display: inline;
@@ -130,8 +131,4 @@
 #playerPoints {
     position: fixed;
     left: 100px;
-}
-#playersCard {
-    position: fixed;
-    left: 150px;    
 }
