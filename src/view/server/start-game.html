@@ -2,19 +2,19 @@
 <head>
     <title>Game Master</title>
     <script type="text/javascript" src="../../../lib/angular.min.js"></script>
-    <!--<script src="../../js/server/game-master.js"></script>-->
     <script type="text/javascript" src="../../js/controller/master-controller.js"></script>
 </head>
 
 <body>
-<div ng-app="uno">
-    <div ng-controller="startCtrl">
+<div ng-app="uno" ng-controller="startCtrl">
+    <div ng-show="gameNotCreated">
         <form ng-submit="createGame()">
             Packs: <input type="text" ng-model="noOfPacks"/></br>
             Players: <input type="text" ng-model="noOfPlayers"/></br>
             <input type="submit" value="Create Game"/>
         </form>
     </div>
+    <div  ng-show="!gameNotCreated">WAITING FOR THE PLAYERS TO CONNECT  ...........  </div>        
 </div>
 </body>
 </html>
