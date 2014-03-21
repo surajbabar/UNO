@@ -40,13 +40,6 @@
     position: fixed;
     left: 750px;
     top: 10px;
-    height: 400px;
-    width: 250px;
-}
-
-#log {
-    font-size: 125%;
-    text-align: justify;
 }
 
 #cards {
@@ -91,19 +84,13 @@
     padding: 10px;
 }
 
-#error {
+#warning {
     position: fixed;
     left: 500px;
     top: 200px;
-    height: 120px;
-    width: 300px;
-}
-
-#errorText {
-    font-size: 150%;
-    height: 120px;
-    width: 200px;
     background-color: rgb(255, 100, 100);
+    font-size: 150%;
+    
 }
 #cardsLeft {
     position: fixed;
