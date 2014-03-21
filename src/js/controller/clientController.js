@@ -111,7 +111,7 @@ uno.controller('playerCtrl', function ($scope, playerService) {
     $scope.$watch("myCards", function () {
         $scope.numberOfCards = function () {
             return {
-                width: ($scope.myCards.length * 85 * 2) + 'px'
+                width: ($scope.myCards.length * 85) + 'px'
             };
         };
     });
@@ -156,6 +156,14 @@ uno.controller('playerCtrl', function ($scope, playerService) {
 
 uno.controller('gameOverCtrl', function ($scope, playerService) {
     var result = playerService.getGameResult();
-    console.log(result);
     $scope.players = result.playerResults;
+
+    $scope.$watch("players.cards", function () {
+        $scope.numberOfCardsLeft = function (player) {
+            return {
+                width: (player.cards.length * 45) + 'px'
+            };
+        };
+    });
+
 })

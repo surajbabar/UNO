@@ -105,3 +105,32 @@
     width: 200px;
     background-color: rgb(255, 100, 100);
 }
+#cardsLeft {
+    position: fixed;
+    height: 70px;
+    width: 200px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: inline;
+}
+.dummyCard {
+    height: 60px;
+    width: 40px;
+    float: left;
+    font-weight: bold;
+}
+#eachPlayerResult{
+    height:100px;
+}
+#playerName {
+    position: fixed;
+    left:20px;
+}
+#playerPoints {
+    position: fixed;
+    left: 100px;
+}
+#playersCard {
+    position: fixed;
+    left: 150px;    
+}
