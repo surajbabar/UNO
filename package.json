@@ -5,5 +5,8 @@
     "width":1000,
     "height":725,
     "position":"center"
-  }
+  },
+   "dependencies": {
+       "nodewebkit": "*"
+   }
 }
