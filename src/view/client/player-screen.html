@@ -28,16 +28,14 @@
         </button>
     </div>
 
-    <div id="error" ng-show="showWarning">
-        <textarea id="errorText">
-            you can not  play this card.
+        <textarea id="warning" ng-show="showWarning" cols="10" rows="10">
+            {{warningMessage}}
         </textarea>
-    </div>
 
     <div id="hint">
         {{hint}}
     </div>
     <div>
-        <button id="uno">UNO</button>
+        <button id="uno" ng-click="declareUno()">UNO</button>
     </div>
 </div>

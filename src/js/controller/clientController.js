@@ -77,8 +77,15 @@ var setProperColors = function (myCards) {
     });
     return myCards;
 }
+var checkForUno =function(playerSummaries) {
+       playerSummaries.forEach(function(summary){
+           if(summary.unoStatus)
+           summary.noOfCards="uno";
+       });
+       return playerSummaries;
+}
 var update = function (snapshot, $scope) {
-    $scope.players = snapshot.playerSummaries;
+    $scope.players = checkForUno(snapshot.playerSummaries);
     $scope.myCards = setProperColors(snapshot.myCards);
     $scope.activityLog = $scope.activityLog + '\n' + snapshot.currentTurnLog;
     $scope.openCard = snapshot.openCard;
@@ -118,13 +125,14 @@ uno.controller('playerCtrl', function ($scope, playerService) {
 
     var timeout;
     $scope.playCard = function (card) {
-        if (!cardModel.canFollowCard(card, snapshot)) {
-            $scope.showWarning = true;
-            return;
-        }
-        if (timeout) {
-            clearTimeout(timeout);
-        }
+//        if (!cardModel.canFollowCard(card, snapshot)) {
+//            $scope.warningMessage="you can not  play this card.";
+//            $scope.showWarning = true;
+//            return;
+//        }
+//        if (timeout) {
+//            clearTimeout(timeout);
+//        }
         var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
         if (card.color == "black") {
             var color = prompt('please choose a color');
@@ -133,6 +141,16 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         channel.write(JSON.stringify(playedCardInfo));
     }
 
+    $scope.declareUno = function(){
+        if (snapshot.myCards.length!=1){
+            $scope.warningMessage="you can say uno if you have only one card";
+            $scope.showWarning = true;
+             return;
+        }
+        channel.write(JSON.stringify({type:'declaredUno' }));
+        $scope.players[snapshot.myPlayerIndex].noOfCards="uno";
+
+    }
 
     $scope.drawCard = function () {
         if (snapshot.drawTwoRun > 0) {
