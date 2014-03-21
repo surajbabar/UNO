@@ -125,14 +125,14 @@ uno.controller('playerCtrl', function ($scope, playerService) {
 
     var timeout;
     $scope.playCard = function (card) {
-//       if (!cardModel.canFollowCard(card, snapshot)) {
-//           $scope.warningMessage="you can not  play this card.";
-//           $scope.showWarning = true;
-//           return;
-//       }
-//       if (timeout) {
-//           clearTimeout(timeout);
-//       }
+       if (!cardModel.canFollowCard(card, snapshot)) {
+           $scope.warningMessage="you can not  play this card.";
+           $scope.showWarning = true;
+           return;
+       }
+       if (timeout) {
+           clearTimeout(timeout);
+       }
         var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
         if (card.color == "black") {
             var color = prompt('please choose a color');
