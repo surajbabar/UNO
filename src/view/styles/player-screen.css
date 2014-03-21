@@ -73,6 +73,7 @@
     height: 30px;
     width: 300px;
     font-size: 25px;
+
 }
 
 #uno {
@@ -84,6 +85,20 @@
     padding: 10px;
 }
 
+#colorChooser{
+    left: 550px;
+    top: 200px;
+    width: 200px;
+    height: 220px;
+    position: fixed;
+}
+
+.colorButton{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
 #warning {
     position: fixed;
     left: 500px;
@@ -92,29 +107,11 @@
     font-size: 150%;
 
 }
-#cardsLeft {
-    position: fixed;
-    height: 70px;
-    width: 200px;
-    left:150px; 
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: inline;
-}
-.dummyCard {
-    height: 60px;
-    width: 40px;
-    float: left;
-    font-weight: bold;
-}
-#eachPlayerResult{
-    height:100px;
-}
-#playerName {
-    position: fixed;
-    left:20px;
-}
-#playerPoints {
-    position: fixed;
-    left: 100px;
+
+#chooseColor{
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    color: white;
+    font-size: 150%;
 }
