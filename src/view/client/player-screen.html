@@ -4,7 +4,7 @@
         <label class="turn">{{currentPlayer}}'s turn</label>
 
         <div ng-repeat="player in players">
-            <button class="catchButton" ng-click="catchPlayer()">{{player.name}}:{{player.noOfCards}}</button>
+            <button class="catchButton" ng-click="catchPlayer(player)">{{player.name}}:{{player.noOfCards}}</button>
         </div>
     </div>
 
