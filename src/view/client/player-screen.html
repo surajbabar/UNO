@@ -8,10 +8,7 @@
         </div>
     </div>
 
-    <div id="activityLog">
-        <textarea id="log" cols="20" rows="36">{{activityLog}}</textarea>
-    </div>
-
+        <textarea id="activityLog" cols="26" rows="41" onfocus="scrollDown(this)">{{activityLog}}</textarea>
     <div id="cards">
         <div ng-repeat="card in myCards" ng-style="numberOfCards()">
             <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}}"

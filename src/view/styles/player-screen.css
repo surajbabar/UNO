@@ -40,13 +40,6 @@
     position: fixed;
     left: 750px;
     top: 10px;
-    height: 400px;
-    width: 250px;
-}
-
-#log{
-    font-size: 125%;
-    text-align: justify;
 }
 
 #cards {
