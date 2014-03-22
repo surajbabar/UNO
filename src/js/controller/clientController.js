@@ -102,7 +102,6 @@ uno.controller('playerCtrl', function ($scope, playerService) {
     $scope.activityLog = "";
     $scope.hint = "";
     var channel = playerService.getSocket();
-    var newColor;
 
     var snapshot = playerService.getData();
     update(snapshot, $scope);
@@ -136,17 +135,14 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         }
         var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
         if (card.color == "black") {
-            $scope.openColorChooser = true;
-            $scope.$watch("openColorChooser", function () {
-                if ($scope.openColorChooser == false) {
-                    playedCardInfo.color = newColor;
-                    channel.write(JSON.stringify(playedCardInfo));
-                }
-            })
-        }
-        else
+            var color = prompt('please choose a color');
+            playedCardInfo.color = color && color.toLowerCase() || playedCardInfo.color;
             channel.write(JSON.stringify(playedCardInfo));
+            return;
+        }
+        channel.write(JSON.stringify(playedCardInfo));
     }
+
     $scope.catchPlayer = function (player) {
         if (player.noOfCards != 1) {
             $scope.warningMessage = player.name + " has more than one card";
@@ -154,8 +150,8 @@ uno.controller('playerCtrl', function ($scope, playerService) {
             return;
         }
         channel.write(JSON.stringify({type: 'playerCaught', playerIndex: snapshot.playerSummaries.indexOf(player)}));
-
     }
+
     $scope.declareUno = function () {
         if (snapshot.myCards.length != 1) {
             $scope.warningMessage = "you can say uno if you have only one card";
@@ -177,11 +173,6 @@ uno.controller('playerCtrl', function ($scope, playerService) {
                 channel.write(JSON.stringify({type: 'noActionAfterDraw'}));
             }, 5000);
         }
-    }
-
-    $scope.setColor = function (color) {
-        newColor = color;
-        $scope.openColorChooser = false;
     }
 
     $scope.$on('dataChanged', function (data) {

@@ -5,7 +5,7 @@
             <label class="turn">{{currentPlayer}}'s turn</label>
 
             <div ng-repeat="player in players">
-                <button class="catchButton" ng-click="catchPlayer(player)" ng-disabled="openColorChooser">
+                <button class="catchButton" ng-click="catchPlayer(player)">
                     {{player.name}}:{{player.noOfCards}}
                 </button>
             </div>
@@ -16,7 +16,7 @@
 
         <div id="cards">
             <div ng-repeat="card in myCards" ng-style="numberOfCards()">
-                <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}} || openColorChooser"
+                <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}}"
                         ng-style="{background:'{{card.color}}',color:'{{card.foreColor}}'}">{{card.sign}}
                 </button>
 
@@ -24,7 +24,7 @@
         </div>
 
         <div id="drawCards">
-            <button class="card" ng-click="drawCard()" ng-disabled="disableDraw || openColorChooser">Draw</button>
+            <button class="card" ng-click="drawCard()" ng-disabled="disableDraw">Draw</button>
         </div>
 
         <div class="card" id="openPile">
@@ -41,15 +41,7 @@
             {{hint}}
         </div>
         <div>
-            <button id="uno" ng-disabled="openColorChooser" ng-click="declareUno()">UNO</button>
+            <button id="uno" ng-click="declareUno()">UNO</button>
         </div>
-    </div>
-
-    <div id="colorChooser" ng-show="openColorChooser">
-        <label id="chooseColor">Choose a color</label>
-        <button class="colorButton" ng-click=setColor('red') style="background:red"></button>
-        <button class="colorButton" ng-click=setColor('blue') style="background:blue"></button>
-        <button class="colorButton" ng-click=setColor('yellow') style="background:yellow"></button>
-        <button class="colorButton" ng-click=setColor('green') style="background:green"></button>
     </div>
 </div>
