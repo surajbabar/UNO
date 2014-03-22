@@ -31,5 +31,18 @@ UNO is a stand-alone app implemented using angularjs and node-webkit. It's a mul
   * UNO button will be there to declare `uno`.
   
 ## How To Play
+
+#### Play a card
+  * In your turn you can play a card.
+  * If the played card will not match the rules player will get a warning message.
+
+#### Draw Cards
+  * You can draw a card in your turn.
+  * After draw you will get 5 seconds to play the card after 5 seconds turn will go to next player
+  * After a draw of `Draw Two` turn will immediately go to next player.
+   
+#### Play a wild or Draw Four
+  * After playing a wild card or draw four a screen will appear where you have to fill the color name you want to chhose.
+  * You can only fill red,blue,yellow or green color names.
   
 
