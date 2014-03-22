@@ -15,5 +15,10 @@ UNO is a stand-alone app implemented using angularjs and node-webkit. It's a mul
 ###Game-Master
   * In game master screen you will get two options to give `Number of Packs` and `Number of Players` for the game. It's by default set to 1 and 1.
   * After filling these two fields you will click on `create game` button.
-  * It will show the message that game creation message. 
+  * It will show the message that game creation message.
+
+###Game-Master
+  * In game player screen you will get two options to give `Number of Packs` and `Number of Players` for the game. It's by default set to 1 and 1.
+  * After filling these two fields you will click on `create game` button.
+  * It will show the message that game creation message.
 

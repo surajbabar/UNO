@@ -136,7 +136,12 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
         if (card.color == "black") {
             var color = prompt('please choose a color');
-            playedCardInfo.color = color && color.toLowerCase() || snapshot.runningColor;
+            playedCardInfo.color = color && color.toLowerCase();
+            if (['red', 'green', 'blue', 'yellow'].indexOf(playedCardInfo.color) < 0) {
+                $scope.warningMessage = "You can choose red,green,blue or yellow.";
+                $scope.showWarning = true;
+                return;
+            }
             channel.write(JSON.stringify(playedCardInfo));
             return;
         }
