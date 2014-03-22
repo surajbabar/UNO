@@ -33,10 +33,10 @@ uno.controller('joinCtrl', function ($scope, $location, $route, playerService) {
     var client;
     var firstTimeData = true;
     $scope.joinGame = function () {
-        gui.Window.get().hide();
         client = net.connect({port: 8080, host: $scope.masterName}, function () {
             var introduction = {type: 'introduction', playerName: $scope.playerName};
             client.write(JSON.stringify(introduction));
+            gui.Window.get().hide();
         });
 
         function switchToPlayerScreen(data) {

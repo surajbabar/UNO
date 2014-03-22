@@ -3,8 +3,9 @@
     "main": "src/view/index.html",
     "window": {
         "width": 1000,
-        "height": 725,
-        "position": "center"
+        "height": 690,
+        "position": "center",
+        "toolbar":false
     },
     "dependencies": {
         "nodewebkit": "*"
