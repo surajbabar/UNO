@@ -5,8 +5,7 @@ UNO is a stand-alone app implemented using angularjs and node-webkit. It's a mul
 
 ##How to Install
   * Clone the url `https://github.com/surajbabar/UNO.git` into your machine.
-  * Go to the folder and do a `npm install`.
-  * If you don't have `nodewebkit` installed globally on your machine do a `npm install -g nodewebkit`.
+  * If you don't have `nodewebkit` installed globally on your machine do a `npm install -g nodewebkit@0.8.5`.
 
 ##How to Start
   * Go to the folder where you have cloned the repo.
