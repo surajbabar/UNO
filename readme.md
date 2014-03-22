@@ -4,7 +4,7 @@ UNO
 UNO is a stand-alone app implemented using angularjs and node-webkit. It's a multiplayer game.
 
 ##How to Install
-  * Clone the url https://github.com/surajbabar/UNO.git into your machine.
+  * Clone the url `https://github.com/surajbabar/UNO.git` into your machine.
   * Go to the folder and do a `npm install`.
   * If you don't have `nodewebkit` installed globally on your machine do a `npm install -g nodewebkit`.
 
