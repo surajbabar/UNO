@@ -87,7 +87,7 @@ var checkForUno = function (playerSummaries) {
 var update = function (snapshot, $scope) {
     $scope.players = checkForUno(snapshot.playerSummaries);
     $scope.myCards = setProperColors(snapshot.myCards);
-    $scope.activityLog = $scope.activityLog + '\n' + snapshot.currentTurnLog;
+    $scope.activityLog = snapshot.currentTurnLog + '\n' + $scope.activityLog;
     $scope.openCard = snapshot.openCard;
     var foreColor = $scope.openCard.color == "blue" || $scope.openCard.color == "black" ? "white" : "black";
     $scope.openPileProp = {background: snapshot.openCard.color, color: foreColor};
