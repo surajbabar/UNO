@@ -19,7 +19,6 @@
     height: 40px;
     width: 800px;
     display: inline;
-    color: red;
 }
 
 .catchButton {
@@ -27,6 +26,7 @@
     width: 150px;
     height: 40px;
     font-size: 105%;
+    border-radius: 3px;
 }
 
 .card {
@@ -73,6 +73,7 @@
     height: 30px;
     width: 300px;
     font-size: 25px;
+    font-weight: bold;
 
 }
 
