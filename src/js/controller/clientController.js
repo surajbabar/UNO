@@ -87,7 +87,7 @@ var checkForUno = function (playerSummaries) {
 var update = function (snapshot, $scope) {
     $scope.players = checkForUno(snapshot.playerSummaries);
     $scope.myCards = setProperColors(snapshot.myCards);
-    $scope.activityLog = snapshot.currentTurnLog + '\n' + $scope.activityLog;
+    $scope.activityLog = snapshot.currentTurnLog + '\n----------------------------\n' + $scope.activityLog;
     $scope.openCard = snapshot.openCard;
     var foreColor = $scope.openCard.color == "blue" || $scope.openCard.color == "black" ? "white" : "black";
     $scope.openPileProp = {background: snapshot.openCard.color, color: foreColor};
@@ -111,7 +111,7 @@ uno.controller('playerCtrl', function ($scope, playerService) {
             setTimeout(function () {
                 $scope.showWarning = false;
                 $scope.$apply();
-            }, 1000);
+            }, 1500);
         }
     });
 
@@ -125,11 +125,11 @@ uno.controller('playerCtrl', function ($scope, playerService) {
 
     var timeout;
     $scope.playCard = function (card) {
-        if (!cardModel.canFollowCard(card, snapshot)) {
-            $scope.warningMessage = "you can not  play this card.";
-            $scope.showWarning = true;
-            return;
-        }
+//        if (!cardModel.canFollowCard(card, snapshot)) {
+//            $scope.warningMessage = "you can not  play this card.";
+//            $scope.showWarning = true;
+//            return;
+//        }
         if (timeout) {
             clearTimeout(timeout);
         }

@@ -10,6 +10,7 @@
     color: white;
     font-weight: bold;
     font-size: 150%;
+
 }
 
 #otherPlayers {
@@ -26,7 +27,7 @@
     width: 150px;
     height: 40px;
     font-size: 105%;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 
 .card {
@@ -40,6 +41,7 @@
     position: fixed;
     left: 750px;
     top: 10px;
+    font: 16px;
 }
 
 #cards {
@@ -68,13 +70,22 @@
 
 #hint {
     position: fixed;
-    left: 250px;
+    left: 300px;
     top: 410px;
     height: 30px;
     width: 300px;
     font-size: 25px;
     font-weight: bold;
+}
 
+#turnWisePlayerName {
+    position: fixed;
+    left: 100px;
+    top: 410px;
+    height: 30px;
+    width: 200px;
+    font-size: 25px;
+    float: left;
 }
 
 #uno {

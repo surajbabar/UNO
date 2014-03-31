@@ -2,7 +2,6 @@
     <div id="playingBoard">
         <div id="otherPlayers">
             <label class="turn">{{directionSign}}</label>
-            <label class="turn">{{currentPlayer}}'s turn</label>
 
             <div ng-repeat="player in players">
                 <button class="catchButton" ng-click="catchPlayer(player)">
@@ -36,9 +35,12 @@
         <textarea id="warning" ng-show="showWarning" cols="10" rows="10">
             {{warningMessage}}
         </textarea>
+        <div id="turnWisePlayerName">
+            {{currentPlayer}}'s turn :
 
+        </div>
         <div id="hint">
-            {{currentPlayer}}  {{hint}}
+             {{hint}}
         </div>
         <div>
             <button id="uno" ng-click="declareUno()">UNO</button>
