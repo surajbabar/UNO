@@ -1,8 +1,19 @@
 var uno = angular.module('clientController');
 
 var setProperColors = function (myCards) {
+    function getNiceLookingColorFor(color) {
+        var colors = {
+            "blue": "rgb(41, 128, 185)",
+            "red": "rgb(192, 57, 43)",
+            "green": "rgb(46, 204, 113)",
+            "yellow": "rgb(241, 196, 15)"
+        };
+        return colors[color] || color;
+    }
+
     myCards.forEach(function (card) {
         card.foreColor = card.color == "blue" || card.color == "black" ? "white" : "black";
+        card.color = getNiceLookingColorFor(card.color);
     });
     return myCards;
 }
@@ -55,6 +66,18 @@ uno.controller('playerCtrl', function ($scope, playerService) {
 
     var timeout;
     $scope.playCard = function (card) {
+        function getColorNameFor(color) {
+            var colors = {
+                "rgb(41, 128, 185)": "blue",
+                "rgb(192, 57, 43)": "red",
+                "rgb(46, 204, 113)": "green",
+                "rgb(241, 196, 15)": "yellow"
+            };
+            return colors[color] || color;
+
+        }
+
+        card.color = getColorNameFor(card.color);
         if (!cardModel.canFollowCard(card, snapshot)) {
             $scope.warningMessage = "you can not  play this card.";
             $scope.showWarning = true;

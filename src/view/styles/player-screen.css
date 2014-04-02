@@ -41,7 +41,7 @@
     position: fixed;
     left: 750px;
     top: 10px;
-    font: 16px;
+    font-size: 16px;
 }
 
 #cards {
