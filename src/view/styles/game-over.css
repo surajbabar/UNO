@@ -1,20 +1,22 @@
 #cardsLeft {
     position: fixed;
-    height: 70px;
-    width: 200px;
-    left:150px; 
+    height: 110px;
+    width: 500px;
+    left:150px;
     overflow-x: auto;
     overflow-y: hidden;
     display: inline;
 }
 .dummyCard {
-    height: 60px;
-    width: 40px;
+    height: 100px;
+    width: 80px;
     float: left;
     font-weight: bold;
 }
 #eachPlayerResult{
-    height:100px;
+    height:120px;
+    border-color: white;
+    border-width: 5px;
 }
 #playerName {
     position: fixed;
