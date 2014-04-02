@@ -2,3 +2,4 @@
 .idea
 node_modules/.bin
 node_modules/nodewebkit
+node_modules/underscore
