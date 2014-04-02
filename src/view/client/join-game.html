@@ -1,15 +1,14 @@
-<div class="centerDiv">
+<div class="centerDiv" ng-show="!hasEveryoneJoined">
     <form ng-submit="joinGame()">
         <table>
             <tr><td>Game Master: </td>
                 <td><input type="text" ng-model="masterName"/></td><br>
             <tr><td>Your Name:	</td>
                 <td><input type="text" ng-model="playerName"/></td><br>
-            <tr><td colspan = "2"><br/><center><input type="submit" value="JOIN"/></center></td></tr>
+            <tr><td colspan = "2"><br/><center><input type="submit" id="join" value="JOIN"/></center></td></tr>
         </table>
-        <!--Game Master: <input type="text" ng-model="masterName"/></br>-->
-        <!--Your Name: <input type="text" ng-model="playerName"/>-->
-        <!--</br>-->
-        <!--<input type="submit" value="JOIN"/>-->
     </form>
+</div>
+<div class="centerDiv" ng-show="hasEveryoneJoined">
+    <label id="startInfo">please wait for other players to connect</label>
 </div>
