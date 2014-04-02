@@ -16,14 +16,15 @@
         <div id="cards">
             <div ng-repeat="card in myCards" ng-style="numberOfCards()">
                 <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}}"
-                        ng-style="{background:'{{card.color}}',color:'{{card.foreColor}}'}">{{card.sign}}
+                        ng-style="setCardProperties(card)">{{card.sign}}
                 </button>
 
             </div>
         </div>
 
         <div id="drawCards">
-            <button class="card" ng-click="drawCard()" ng-disabled="disableDraw">Draw</button>
+            <input type="image" class="card" src="../images/UNO_Card.png" ng-click="drawCard()"
+                   ng-disabled="disableDraw"/>
         </div>
 
         <div class="card" id="openPile">
@@ -35,12 +36,13 @@
         <textarea id="warning" ng-show="showWarning" cols="10" rows="10">
             {{warningMessage}}
         </textarea>
+
         <div id="turnWisePlayerName">
             {{currentPlayer}}'s turn :
 
         </div>
         <div id="hint">
-             {{hint}}
+            {{hint}}
         </div>
         <div>
             <button id="uno" ng-click="declareUno()">UNO</button>
