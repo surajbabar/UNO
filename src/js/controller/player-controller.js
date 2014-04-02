@@ -1,22 +1,30 @@
 var uno = angular.module('clientController');
+var getNiceLookingColorFor = function (color) {
+    var colors = {
+        "blue": "rgb(46, 204, 250)",
+        "red": "rgb(254, 46, 46)",
+        "green": "rgb(1, 223, 58)",
+        "yellow": "rgb(247, 254, 46)"
+    };
+    return colors[color] || color;
+}
+var getColorNameFor = function (color) {
+    var colors = {
+        "rgb(46, 204, 250)": "blue",
+        "rgb(254, 46, 46)": "red",
+        "rgb(1, 223, 58)": "green",
+        "rgb(247, 254, 46)": "yellow"
+    };
+    return colors[color] || color;
 
+}
 var setProperColors = function (myCards) {
-    function getNiceLookingColorFor(color) {
-        var colors = {
-            "blue": "rgb(41, 128, 185)",
-            "red": "rgb(192, 57, 43)",
-            "green": "rgb(46, 204, 113)",
-            "yellow": "rgb(241, 196, 15)"
-        };
-        return colors[color] || color;
-    }
-
     myCards.forEach(function (card) {
         card.foreColor = card.color == "blue" || card.color == "black" ? "white" : "black";
         card.color = getNiceLookingColorFor(card.color);
     });
     return myCards;
-}
+};
 var checkForUno = function (playerSummaries) {
     playerSummaries.forEach(function (summary) {
         if (summary.unoStatus)
@@ -31,7 +39,7 @@ var update = function (snapshot, $scope) {
         $scope.activityLog = snapshot.currentTurnLog + '\n----------------------------\n' + $scope.activityLog;
     $scope.openCard = snapshot.openCard;
     var foreColor = $scope.openCard.color == "blue" || $scope.openCard.color == "black" ? "white" : "black";
-    $scope.openPileProp = {background: snapshot.openCard.color, color: foreColor};
+    $scope.openPileProp = {background: getNiceLookingColorFor(snapshot.openCard.color), color: foreColor};
     $scope.hint = snapshot.hint;
     $scope.directionSign = snapshot.isInAscendingOrder ? "=>" : "<=";
     $scope.currentPlayer = snapshot.playerSummaries[snapshot.currentPlayerIndex].name;
@@ -66,18 +74,8 @@ uno.controller('playerCtrl', function ($scope, playerService) {
 
     var timeout;
     $scope.playCard = function (card) {
-        function getColorNameFor(color) {
-            var colors = {
-                "rgb(41, 128, 185)": "blue",
-                "rgb(192, 57, 43)": "red",
-                "rgb(46, 204, 113)": "green",
-                "rgb(241, 196, 15)": "yellow"
-            };
-            return colors[color] || color;
-
-        }
-
         card.color = getColorNameFor(card.color);
+
         if (!cardModel.canFollowCard(card, snapshot)) {
             $scope.warningMessage = "you can not  play this card.";
             $scope.showWarning = true;
@@ -102,12 +100,15 @@ uno.controller('playerCtrl', function ($scope, playerService) {
     }
 
     $scope.catchPlayer = function (player) {
+        var playerIndex = snapshot.playerSummaries.indexOf(player);
+        if (playerIndex == snapshot.myPlayerIndex)
+            return;
         if (player.noOfCards != 1) {
             $scope.warningMessage = player.name + " has more than one card";
             $scope.showWarning = true;
             return;
         }
-        channel.write(JSON.stringify({type: 'playerCaught', playerIndex: snapshot.playerSummaries.indexOf(player)}));
+        channel.write(JSON.stringify({type: 'playerCaught', playerIndex: playerIndex}));
     }
 
     $scope.declareUno = function () {
