@@ -46,6 +46,8 @@
     left: 750px;
     top: 10px;
     font-size: 16px;
+    font-style: normal;
+    font: 'trebuchet ms', verdana, arial;
 }
 
 #cards {
