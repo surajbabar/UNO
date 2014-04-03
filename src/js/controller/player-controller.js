@@ -64,7 +64,7 @@ uno.controller('playerCtrl', function ($scope, playerService) {
             setTimeout(function () {
                 $scope.showWarning = false;
                 $scope.$apply();
-            }, 2000);
+            }, 5000);
         }
     });
 
@@ -88,7 +88,6 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         snapshot.myCards.forEach(function (card) {
             card.color = getColorNameFor(card.color);
         })
-        console.log(card, snapshot);
         if (!cardModel.canFollowCard(card, snapshot)) {
             $scope.warningMessage = "you can not  play this card.";
             $scope.showWarning = true;
@@ -101,7 +100,18 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         if (card.color == "black") {
             var color = prompt('please choose a color');
             playedCardInfo.color = color && color.toLowerCase();
-            if (['red', 'green', 'blue', 'yellow'].indexOf(playedCardInfo.color) < 0) {
+            var colors = ['red', 'green', 'blue', 'yellow'];
+            if (snapshot.myCards.length == 2) {
+                var cardIndex = snapshot.myCards.indexOf(card);
+                var otherCardIndex = cardIndex == 0 ? 1 : 0;
+                var otherCardColor = snapshot.myCards[otherCardIndex].color;
+                if (otherCardColor == color) {
+                    $scope.warningMessage = "You cannot change the running color to your last cards color ";
+                    $scope.showWarning = true;
+                    return;
+                }
+            }
+            if (colors.indexOf(playedCardInfo.color) < 0) {
                 $scope.warningMessage = "You can choose red,green,blue or yellow.";
                 $scope.showWarning = true;
                 return;
