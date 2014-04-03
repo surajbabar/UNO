@@ -47,5 +47,11 @@
         <div>
             <button id="uno" ng-click="declareUno()">UNO</button>
         </div>
+        <div id="colorChooser" ng-show="openColorChooser">
+            <button class="colorButton" ng-click=setColor('red') style="background:red"></button>
+            <button class="colorButton" ng-click=setColor('blue') style="background:blue"></button>
+            <button class="colorButton" ng-click=setColor('yellow') style="background:yellow"></button>
+            <button class="colorButton" ng-click=setColor('green') style="background:green"></button>
+        </div>
     </div>
 </div>
