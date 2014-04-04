@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <textarea id="activityLog" cols="26" rows="41" onfocus="scrollDown(this)"
+        <textarea id="activityLog" cols="26" rows="38" onfocus="scrollDown(this)"
                   readonly>{{activityLog}}</textarea>
 
         <div id="cards">
@@ -33,9 +33,11 @@
             </button>
         </div>
 
-        <textarea id="warning" ng-show="showWarning" cols="10" rows="10">
-            {{warningMessage}}
-        </textarea>
+        <div id="warning">
+            <textarea id="warning-text" ng-show="showWarning" cols="80" rows="1">
+                {{warningMessage}}
+            </textarea>
+        </div>
 
         <div id="turnWisePlayerName">
             {{currentPlayer}}'s turn :
@@ -49,10 +51,10 @@
         </div>
         <div id="colorChooser" ng-show="openColorChooser">
             <label id="chooseColor">Choose a Color</label>
-            <button class="colorButton" ng-click="setColor('red')" style="background:rgb(255, 112, 109)"></button>
-            <button class="colorButton" ng-click="setColor('blue')" style="background:rgb(78, 143, 255)"></button>
-            <button class="colorButton" ng-click="setColor('yellow')" style="background:rgb(244, 255, 147)"></button>
-            <button class="colorButton" ng-click="setColor('green')" style="background:rgb(129, 255, 152)"></button>
+            <button class="colorButton" ng-click="setColor('red')" style="background:rgb(232, 67, 76)"></button>
+            <button class="colorButton" ng-click="setColor('blue')" style="background:rgb(48, 199, 255)"></button>
+            <button class="colorButton" ng-click="setColor('yellow')" style="background:rgb(222, 204, 39)"></button>
+            <button class="colorButton" ng-click="setColor('green')" style="background:rgb(20, 157, 87)"></button>
         </div>
     </div>
 </div>
