@@ -4,7 +4,7 @@
             <label class="turn">{{directionSign}}</label>
 
             <div ng-repeat="player in players">
-                <button class="catchButton" ng-click="catchPlayer(player)">
+                <button class="catchButton" ng-click="catchPlayer(player)" ng-disabled="openColorChooser">
                     {{player.name}}:{{player.noOfCards}}
                 </button>
             </div>
@@ -15,7 +15,7 @@
 
         <div id="cards">
             <div ng-repeat="card in myCards" ng-style="numberOfCards()">
-                <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}}"
+                <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}} || openColorChooser"
                         ng-style="setCardProperties(card)">{{card.sign}}
                 </button>
 
@@ -24,7 +24,7 @@
 
         <div id="drawCards">
             <input type="image" class="card" src="../images/UNO_Card.png" ng-click="drawCard()"
-                   ng-disabled="disableDraw"/>
+                   ng-disabled="disableDraw ||openColorChooser"/>
         </div>
 
         <div class="card" id="openPile">
@@ -45,13 +45,14 @@
             {{hint}}
         </div>
         <div>
-            <button id="uno" ng-click="declareUno()">UNO</button>
+            <button id="uno" ng-click="declareUno()" ng-disabled="openColorChooser">UNO</button>
         </div>
         <div id="colorChooser" ng-show="openColorChooser">
-            <button class="colorButton" ng-click=setColor('red') style="background:red"></button>
-            <button class="colorButton" ng-click=setColor('blue') style="background:blue"></button>
-            <button class="colorButton" ng-click=setColor('yellow') style="background:yellow"></button>
-            <button class="colorButton" ng-click=setColor('green') style="background:green"></button>
+            <label id="chooseColor">Choose a Color</label>
+            <button class="colorButton" ng-click="setColor('red')" style="background:rgb(255, 112, 109)"></button>
+            <button class="colorButton" ng-click="setColor('blue')" style="background:rgb(78, 143, 255)"></button>
+            <button class="colorButton" ng-click="setColor('yellow')" style="background:rgb(244, 255, 147)"></button>
+            <button class="colorButton" ng-click="setColor('green')" style="background:rgb(129, 255, 152)"></button>
         </div>
     </div>
 </div>

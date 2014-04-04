@@ -4,13 +4,13 @@
     "window": {
         "width": 1480,
         "height": 800,
-        "position": "center",
-        "toolbar": false
+        "toolbar": false,
+        "position": "center"
     },
     "devDependencies": {
         "underscore": "*"
     },
     "dependencies": {
-      
+
     }
 }
