@@ -4,8 +4,8 @@
     "window": {
         "width": 1000,
         "height": 690,
-        "position": "center",
-        "toolbar": false
+        "toolbar": false,
+        "position": "center"
     },
     "devDependencies": {
         "underscore": "*"
