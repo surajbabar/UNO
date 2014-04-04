@@ -49,6 +49,7 @@ var update = function (snapshot, $scope) {
     $scope.currentPlayer = snapshot.playerSummaries[snapshot.currentPlayerIndex].name;
     $scope.enable = snapshot.playerSummaries[snapshot.currentPlayerIndex] != snapshot.playerSummaries[snapshot.myPlayerIndex];
     $scope.disableDraw = snapshot.disableDraw || $scope.enable;
+    $scope.showWarning = false;
 }
 
 uno.controller('playerCtrl', function ($scope, $rootScope, playerService) {
@@ -61,19 +62,19 @@ uno.controller('playerCtrl', function ($scope, $rootScope, playerService) {
     var snapshot = playerService.getData();
     update(snapshot, $scope);
 
-    $scope.$watch("showWarning", function () {
-        if ($scope.showWarning) {
-            setTimeout(function () {
-                $scope.showWarning = false;
-                $scope.$apply();
-            }, 5000);
-        }
-    });
+//    $scope.$watch("showWarning", function () {
+//        if ($scope.showWarning) {
+//            setTimeout(function () {
+//                $scope.showWarning = false;
+//                $scope.$apply();
+//            }, 5000);
+//        }
+//    });
 
     $scope.$watch("myCards", function () {
         $scope.numberOfCards = function () {
             return {
-                width: ($scope.myCards.length * 85) + 'px'
+                width: ($scope.myCards.length * 110) + 'px'
             };
         };
         $scope.showCardSign = function (card) {

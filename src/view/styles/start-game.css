@@ -19,9 +19,9 @@ body{
 .notifyGameStart {
     top: 20px;
     left: 200px;
-    font-weight: bolder;
     font-size:40px;
     color: white;
+    font-family: monospace;
 }
 
 .centerDiv{
