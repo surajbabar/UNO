@@ -10,6 +10,12 @@ body{
 
 }
 
+.getDetails {
+    color:black;
+    font-weight: bold;
+    font-size: 40px;
+}
+
 .notifyGameStart {
     top: 20px;
     left: 200px;
@@ -19,14 +25,19 @@ body{
 }
 
 .centerDiv{
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 600px;
     position: absolute;
     top:200px;
-    left: 500px;
+    left: 400px;
     margin: auto;
     border-radius:20px ;
-
-
+}
+#join {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
 }
 

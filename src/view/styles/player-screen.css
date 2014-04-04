@@ -119,9 +119,8 @@
 
 #warning {
     position: fixed;
-    left: 500px;
-    top: 200px;
-    background-color: rgb(255, 100, 100);
+    left: 0px;
+    top: 800px;
     font-size: 150%;
 
 }
