@@ -2,8 +2,8 @@
     "name": "UNO",
     "main": "src/view/index.html",
     "window": {
-        "width": 1000,
-        "height": 690,
+        "width": 1480,
+        "height": 800,
         "position": "center",
         "toolbar": false
     },
@@ -11,6 +11,6 @@
         "underscore": "*"
     },
     "dependencies": {
-        "nodewebkit": "*"
+      
     }
 }
