@@ -7,6 +7,7 @@ body{
     height: 40px;
     font-size: 115%;
     margin-top: 50px;
+    font-family: helvetica;
 
 }
 
@@ -14,6 +15,7 @@ body{
     color:black;
     font-weight: bold;
     font-size: 40px;
+    font-family: helvetica;
 }
 
 .notifyGameStart {
@@ -21,7 +23,10 @@ body{
     left: 200px;
     font-size:40px;
     color: white;
-    font-family: monospace;
+
+}
+#startInfo {
+    font-family: helvetica;
 }
 
 .centerDiv{
