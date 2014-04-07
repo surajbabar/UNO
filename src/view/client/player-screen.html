@@ -4,26 +4,27 @@
             <label class="turn">{{directionSign}}</label>
 
             <div ng-repeat="player in players">
-                <button class="catchButton" ng-click="catchPlayer(player)">
+                <button class="catchButton" ng-click="catchPlayer(player)" ng-disabled="openColorChooser">
                     {{player.name}}:{{player.noOfCards}}
                 </button>
             </div>
         </div>
 
-        <textarea id="activityLog" cols="26" rows="41" onfocus="scrollDown(this)"
+        <textarea id="activityLog" cols="26" rows="38" onfocus="scrollDown(this)"
                   readonly>{{activityLog}}</textarea>
 
         <div id="cards">
             <div ng-repeat="card in myCards" ng-style="numberOfCards()">
-                <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}}"
-                        ng-style="{background:'{{card.color}}',color:'{{card.foreColor}}'}">{{card.sign}}
+                <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}} || openColorChooser"
+                        ng-style="setCardProperties(card)">{{card.sign}}
                 </button>
 
             </div>
         </div>
 
         <div id="drawCards">
-            <button class="card" ng-click="drawCard()" ng-disabled="disableDraw">Draw</button>
+            <input type="image" class="card" src="../images/UNO_Card.png" ng-click="drawCard()"
+                   ng-disabled="disableDraw ||openColorChooser"/>
         </div>
 
         <div class="card" id="openPile">
@@ -32,18 +33,28 @@
             </button>
         </div>
 
-        <textarea id="warning" ng-show="showWarning" cols="10" rows="10">
-            {{warningMessage}}
-        </textarea>
+        <div id="warning">
+            <textarea id="warning-text" ng-show="showWarning" cols="80" rows="1">
+                {{warningMessage}}
+            </textarea>
+        </div>
+
         <div id="turnWisePlayerName">
             {{currentPlayer}}'s turn :
 
         </div>
         <div id="hint">
-             {{hint}}
+            {{hint}}
         </div>
         <div>
-            <button id="uno" ng-click="declareUno()">UNO</button>
+            <button id="uno" ng-click="declareUno()" ng-disabled="openColorChooser">UNO</button>
+        </div>
+        <div id="colorChooser" ng-show="openColorChooser">
+            <label id="chooseColor">Choose a Color</label>
+            <button class="colorButton" ng-click="setColor('red')" style="background:rgb(232, 67, 76)"></button>
+            <button class="colorButton" ng-click="setColor('blue')" style="background:rgb(48, 199, 255)"></button>
+            <button class="colorButton" ng-click="setColor('yellow')" style="background:rgb(222, 204, 39)"></button>
+            <button class="colorButton" ng-click="setColor('green')" style="background:rgb(20, 157, 87)"></button>
         </div>
     </div>
 </div>

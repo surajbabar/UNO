@@ -1,0 +1,23 @@
+body{
+    background-image:url("../images/UNO.png");
+}
+
+.renderButton{
+    width: 200px;
+    height: 40px;
+    font-size: 115%;
+    margin-top: 50px;
+
+}
+
+.centerDiv{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top:200px;
+    left: 500px;
+    margin: auto;
+    background-color: transparent;
+    border-radius:20px ;
+}
+

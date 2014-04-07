@@ -1,31 +1,48 @@
 body{
-    background-color: gray;
+    background-image:url("../images/UNO.png");
 }
 
 .renderButton{
     width: 200px;
-    height: 30px;
+    height: 40px;
     font-size: 115%;
-    margin-top: 20px;
+    margin-top: 50px;
+    font-family: helvetica;
+
+}
+
+.getDetails {
+    color:black;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: helvetica;
+}
+
+.notifyGameStart {
+    top: 20px;
+    left: 200px;
+    font-size:40px;
+    color: white;
+
+}
+#startInfo {
+    font-family: helvetica;
 }
 
 .centerDiv{
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 600px;
     position: absolute;
-    top:0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-
+    top:200px;
+    left: 400px;
     margin: auto;
+    border-radius:20px ;
+}
+#join {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-table{
-    font-size: 125%;
-}
-
-#startInfo{
-    margin-top: 120px;
-    font-size: 150%;
-}

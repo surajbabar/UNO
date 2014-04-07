@@ -9,6 +9,7 @@ angular.module('clientController').controller('joinCtrl', function ($scope, $htt
         });
 
         function makeGetRequest() {
+            console.log(data)
             $http({method: 'get', url: 'http://uno-step2013.rhcloud.com/snapshot', params: data}).success(function (data) {
                 if(data!='')
                     switchToPlayerScreen(data);
@@ -19,6 +20,7 @@ angular.module('clientController').controller('joinCtrl', function ($scope, $htt
 
         function switchToPlayerScreen(data) {
             clearInterval(continuousRequestForFirstSnapshot);
+            gui.Window.get().hide();
             playerService.changeData(data);
             $location.url('player');
             $route.reload();

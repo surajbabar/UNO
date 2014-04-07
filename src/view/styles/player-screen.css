@@ -1,6 +1,6 @@
 #board {
-    width: 980px;
-    height: 670px;
+    width: 1250px;
+    height: 705px;
     background-color: gray;
 }
 
@@ -27,29 +27,35 @@
     width: 150px;
     height: 40px;
     font-size: 105%;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .card {
-    height: 120px;
-    width: 80px;
+    height: 160px;
+    width: 110px;
     float: left;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 20px;
+    background-size:100% 100%;
+    border-radius: 3px;
+
 }
 
 #activityLog {
     position: fixed;
-    left: 750px;
+    left: 970px;
     top: 10px;
-    font: 16px;
+    font-size: 16px;
+    font-style: normal;
+    font: 'trebuchet ms', verdana, arial;
 }
 
 #cards {
     position: fixed;
     left: 40px;
-    top: 500px;
-    height: 140px;
-    width: 600px;
+    top: 480px;
+    height: 180px;
+    width: 780px;
     overflow-x: auto;
     overflow-y: hidden;
     display: inline;
@@ -57,21 +63,21 @@
 
 #drawCards {
     position: fixed;
-    left: 150px;
+    left: 350px;
     top: 200px;
 }
 
 #openPile {
     position: fixed;
-    left: 400px;
+    left: 600px;
     top: 200px;
     text-align: center;
 }
 
 #hint {
     position: fixed;
-    left: 300px;
-    top: 410px;
+    left: 450px;
+    top: 400px;
     height: 30px;
     width: 300px;
     font-size: 25px;
@@ -80,8 +86,8 @@
 
 #turnWisePlayerName {
     position: fixed;
-    left: 100px;
-    top: 410px;
+    left: 200px;
+    top: 400px;
     height: 30px;
     width: 200px;
     font-size: 25px;
@@ -90,7 +96,7 @@
 
 #uno {
     position: fixed;
-    left: 650px;
+    left: 850px;
     top: 520px;
     border-radius: 20px;
     font-size: 25px;
@@ -113,11 +119,17 @@
 
 #warning {
     position: fixed;
-    left: 500px;
-    top: 200px;
-    background-color: rgb(255, 100, 100);
+    left: 50px;
+    top: 650px;
     font-size: 150%;
 
+}
+#warning-text{
+    background-color: darksalmon;
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: arial;
 }
 
 #chooseColor{
@@ -126,4 +138,5 @@
     text-align: center;
     color: white;
     font-size: 150%;
+    border: 2px;
 }

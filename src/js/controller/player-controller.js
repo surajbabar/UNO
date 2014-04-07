@@ -1,11 +1,11 @@
 var uno = angular.module('clientController');
-
 var setProperColors = function (myCards) {
     myCards.forEach(function (card) {
         card.foreColor = card.color == "blue" || card.color == "black" ? "white" : "black";
+        card.color = getProperImage(card);
     });
     return myCards;
-}
+};
 var checkForUno = function (playerSummaries) {
     playerSummaries.forEach(function (summary) {
         if (summary.unoStatus)
@@ -13,78 +13,141 @@ var checkForUno = function (playerSummaries) {
     });
     return playerSummaries;
 }
+var getProperImage = function (card) {
+    var colors = {
+        "blue": "../images/blue.png",
+        "red": "../images/red.png",
+        "green": "../images/green.png",
+        "yellow": "../images/yellow.png",
+        "black": card.sign == "Wild" ? "../images/wild.png" : "../images/+4.png"
+    };
+    return colors[card.color] || card.color;
+}
+var getColorNameFor = function (color) {
+    var colors = {
+        "../images/blue.png": "blue",
+        "../images/red.png": "red",
+        "../images/green.png": "green",
+        "../images/yellow.png": "yellow",
+        "../images/wild.png": "black",
+        "../images/+4.png": "black"
+
+    };
+    return colors[color] || color;
+
+}
+
 var update = function (snapshot, $scope) {
     $scope.players = checkForUno(snapshot.playerSummaries);
     $scope.myCards = setProperColors(snapshot.myCards);
     if (snapshot.currentTurnLog != '')
-        $scope.activityLog = snapshot.currentTurnLog + '\n----------------------------\n' + $scope.activityLog;
+        $scope.activityLog = snapshot.currentTurnLog + '\n---------------------------\n' + $scope.activityLog;
     $scope.openCard = snapshot.openCard;
-    var foreColor = $scope.openCard.color == "blue" || $scope.openCard.color == "black" ? "white" : "black";
-    $scope.openPileProp = {background: snapshot.openCard.color, color: foreColor};
+    $scope.openPileProp = {"background-image": 'url(' + getProperImage(snapshot.openCard) + ')'};
     $scope.hint = snapshot.hint;
     $scope.directionSign = snapshot.isInAscendingOrder ? "=>" : "<=";
     $scope.currentPlayer = snapshot.playerSummaries[snapshot.currentPlayerIndex].name;
     $scope.enable = snapshot.playerSummaries[snapshot.currentPlayerIndex] != snapshot.playerSummaries[snapshot.myPlayerIndex];
     $scope.disableDraw = snapshot.disableDraw || $scope.enable;
+    $scope.showWarning = false;
 }
 
-uno.controller('playerCtrl', function ($scope, playerService) {
+uno.controller('playerCtrl', function ($scope, $rootScope, playerService) {
     $scope.activityLog = "";
     $scope.hint = "";
+    var colorAfterWildCard = '';
+
     var channel = playerService.getSocket();
 
     var snapshot = playerService.getData();
     update(snapshot, $scope);
 
-    $scope.$watch("showWarning", function () {
-        if ($scope.showWarning) {
-            setTimeout(function () {
-                $scope.showWarning = false;
-                $scope.$apply();
-            }, 2000);
-        }
-    });
+//    $scope.$watch("showWarning", function () {
+//        if ($scope.showWarning) {
+//            setTimeout(function () {
+//                $scope.showWarning = false;
+//                $scope.$apply();
+//            }, 5000);
+//        }
+//    });
 
     $scope.$watch("myCards", function () {
         $scope.numberOfCards = function () {
             return {
-                width: ($scope.myCards.length * 85) + 'px'
+                width: ($scope.myCards.length * 110) + 'px'
             };
         };
+        $scope.showCardSign = function (card) {
+            return card.color == 'black' ? '' : card.sign;
+        }
+        $scope.setCardProperties = function (card) {
+            return {"background-image": 'url(' + getProperImage(card) + ')'};
+        }
     });
 
-    var timeout;
+    var drawCardTimeout;
+    var chooseColorTimeout;
+
+    $scope.setColor = function (color) {
+        $scope.openColorChooser = false;
+        colorAfterWildCard = color;
+    }
+
     $scope.playCard = function (card) {
+        card.color = getColorNameFor(card.color);
+        snapshot.myCards.forEach(function (card) {
+            card.color = getColorNameFor(card.color);
+        })
         if (!cardModel.canFollowCard(card, snapshot)) {
             $scope.warningMessage = "you can not  play this card.";
             $scope.showWarning = true;
             return;
         }
-        if (timeout) {
-            clearTimeout(timeout);
+        if (drawCardTimeout) {
+            clearTimeout(drawCardTimeout);
         }
         var playedCardInfo = {type: 'playCardAction', card: card, color: "blue"};
-        if (card.color == "black") {
-            var color = prompt('please choose a color');
-            playedCardInfo.color = color && color.toLowerCase();
-            if (['red', 'green', 'blue', 'yellow'].indexOf(playedCardInfo.color) < 0) {
-                $scope.warningMessage = "You can choose red,green,blue or yellow.";
-                $scope.showWarning = true;
-                return;
-            }
+
+        if (card.color != "black") {
             channel.write(JSON.stringify(playedCardInfo));
             return;
         }
-        channel.write(JSON.stringify(playedCardInfo));
+        colorAfterWildCard = '';
+        $scope.openColorChooser = true;
+
+        chooseColorTimeout = setTimeout(function () {
+            playedCardInfo.color = colorAfterWildCard;
+            if (colorAfterWildCard == '') {
+                $scope.openColorChooser = false;
+                $scope.$apply();
+                return;
+            }
+            if (snapshot.myCards.length == 2) {
+                var cardIndex = snapshot.myCards.indexOf(card);
+                var otherCardIndex = cardIndex == 0 ? 1 : 0;
+                var otherCardColor = snapshot.myCards[otherCardIndex].color;
+                if (otherCardColor == playedCardInfo.color) {
+                    $scope.warningMessage = "You cannot change the running color to your last cards color ";
+                    $scope.showWarning = true;
+                    $scope.$apply();
+                    return;
+                }
+            }
+            channel.write(JSON.stringify(playedCardInfo));
+            return;
+        }, 2000);
     }
 
     $scope.catchPlayer = function (player) {
+        var playerIndex = snapshot.playerSummaries.indexOf(player);
+        if (playerIndex == snapshot.myPlayerIndex)
+            return;
         if (player.noOfCards != 1) {
             $scope.warningMessage = player.name + " has more than one card";
             $scope.showWarning = true;
             return;
         }
-        channel.write(JSON.stringify({type: 'playerCaught', playerIndex: snapshot.playerSummaries.indexOf(player)}));
+        channel.write(JSON.stringify({type: 'playerCaught', playerIndex: playerIndex}));
     }
 
     $scope.declareUno = function () {
@@ -104,7 +167,7 @@ uno.controller('playerCtrl', function ($scope, playerService) {
         }
         else {
             channel.write(JSON.stringify({type: 'drawAction'}));
-            timeout = setTimeout(function () {
+            drawCardTimeout = setTimeout(function () {
                 channel.write(JSON.stringify({type: 'noActionAfterDraw'}));
             }, 5000);
         }

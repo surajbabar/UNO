@@ -10,19 +10,29 @@
 <div ng-app="uno" ng-controller="startCtrl">
     <div class="centerDiv" ng-show="gameNotCreated">
         <form ng-submit="createGame()">
-            <table>
-                <tr><td>Master Name: </td>
-                    <td><input type="text" ng-model="masterName"/></td><br>
-                <tr><td>Packs: </td>
-                    <td><input type="text" ng-model="noOfPacks"/></td><br>
-                <tr><td>Players:	</td>
-                    <td><input type="text" ng-model="noOfPlayers"/></td><br>
-                <tr><td colspan = "2"><br/><center><input type="submit" value="Create Game"/></center></td></tr>
+            <table class="getDetails">
+                <tr>
+                    <td>Master Name:</td>
+                    <td><input type="text" ng-model="masterName"/></td>
+                    <br>
+                <tr>
+                    <td>Packs:</td>
+                    <td><input type="text" ng-model="noOfPacks"/></td>
+                    <br>
+                <tr>
+                    <td>Players:</td>
+                    <td><input type="text" ng-model="noOfPlayers"/></td>
+                    <br>
+                <tr>
+                    <td colspan="2"><br/>
+                        <center><input type="submit" id="" value="Create Game"/></center>
+                    </td>
+                </tr>
             </table>
         </form>
     </div>
-    <div class="centerDiv" ng-show="!gameNotCreated">
-        <label id="startInfo">Game created by {{masterName}} for {{noOfPlayers}} players with {{noOfPacks}} pack </label>
+    <div class="notifyGameStart" ng-show="!gameNotCreated">
+        <label id="startInfo">Game created by {{masterName}} for {{noOfPlayers}} players with {{noOfPacks}} pack</label>
     </div>
 </div>
 </body>
