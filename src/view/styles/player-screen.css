@@ -104,8 +104,9 @@
 }
 
 #colorChooser{
-    left: 550px;
-    top: 200px;
+    border-radius: 50%;
+    left: 350px;
+    top: 150px;
     width: 200px;
     height: 220px;
     position: fixed;
@@ -115,6 +116,14 @@
     width: 100px;
     height: 100px;
     float: left;
+}
+#chooseColor{
+    width: 100px;
+    height: 20px;
+    text-align: center;
+    color: white;
+    font-size: 150%;
+    border: 2px;
 }
 
 #warning {
@@ -132,11 +141,3 @@
     font-family: arial;
 }
 
-#chooseColor{
-    width: 100px;
-    height: 20px;
-    text-align: center;
-    color: white;
-    font-size: 150%;
-    border: 2px;
-}
