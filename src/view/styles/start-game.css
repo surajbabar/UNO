@@ -8,7 +8,11 @@ body{
     font-size: 115%;
     margin-top: 50px;
     font-family: helvetica;
+}
 
+.inputField{
+    width: 250px;
+    font-size: 25px;
 }
 
 .getDetails {
@@ -23,14 +27,14 @@ body{
     left: 200px;
     font-size:40px;
     color: white;
-
 }
+
 #startInfo {
     font-family: helvetica;
 }
 
 .centerDiv{
-    width: 500px;
+    width: 600px;
     height: 600px;
     position: absolute;
     top:200px;
@@ -38,11 +42,23 @@ body{
     margin: auto;
     border-radius:20px ;
 }
-#join {
-    width: 150px;
-    height: 30px;
+
+.button {
+    width: 200px;
+    height: 45px;
     border-radius: 5px;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: bolder;
+}
+
+#chooseMaster{
+    float: right;
+    background-color: gray;
+    width: 200px;
+}
+
+.radioSelect{
+    font-size: 25px;
+    color: white;
 }
 

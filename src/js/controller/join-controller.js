@@ -1,6 +1,10 @@
 var config = require('uno-config');
 
 angular.module('clientController').controller('joinCtrl', function ($scope, $http, $location, $route, playerService) {
+    $http({method: 'get', url: config.host + 'mastersList/'}).success(function (data) {
+        $scope.gameMasters = data;
+    });
+
     $scope.masterName = "me";
     $scope.playerName = "add";
     $scope.amIJoined = false;

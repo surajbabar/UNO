@@ -13,24 +13,29 @@
             <table class="getDetails">
                 <tr>
                     <td>Master Name:</td>
-                    <td><input type="text" ng-model="masterName"/></td>
+                    <td><input type="text" class="inputField" ng-model="masterName"/></td>
                     <br>
                 <tr>
                     <td>Packs:</td>
-                    <td><input type="text" ng-model="noOfPacks"/></td>
+                    <td><input type="text" class="inputField" ng-model="noOfPacks"/></td>
                     <br>
                 <tr>
                     <td>Players:</td>
-                    <td><input type="text" ng-model="noOfPlayers"/></td>
+                    <td><input type="text" class="inputField" ng-model="noOfPlayers"/></td>
                     <br>
                 <tr>
                     <td colspan="2"><br/>
-                        <center><input type="submit" id="" value="Create Game"/></center>
+                        <center><input type="submit" class="button" value="Create Game"/></center>
                     </td>
                 </tr>
             </table>
         </form>
     </div>
+
+    <div class="notifyGameStart" ng-show="inUse">
+        <label>{{masterName}} is already in use as a Game Master. Please choose another Master Name.</label>
+    </div>
+
     <div class="notifyGameStart" ng-show="!gameNotCreated">
         <label id="startInfo">Game created by {{masterName}} for {{noOfPlayers}} players with {{noOfPacks}} pack</label>
     </div>

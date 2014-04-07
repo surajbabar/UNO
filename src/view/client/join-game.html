@@ -1,11 +1,24 @@
-<div class="centerDiv" ng-hide="amIJoined">
+<div class="centerDiv" ng-hide="amIJoined" xmlns="http://www.w3.org/1999/html">
+    <div id="chooseMaster">
+        <div ng-repeat="master in gameMasters">
+            <input type="radio" class="radioSelect" name="gameMaster" value="{{master}}">{{master}}</input>
+        </div>
+    </div>
     <form ng-submit="joinGame()">
         <table class="getDetails">
-            <tr><td>Game Master: </td>
-                <td><input type="text" ng-model="masterName"/></td><br>
-            <tr><td>Your Name: </td>
-                <td><input type="text" ng-model="playerName"/></td><br>
-            <tr><td colspan = "2"><br/><center><input type="submit" id="join" value="JOIN"/></center></td></tr>
+            <tr>
+                <td>Game Master:</td>
+                <td><input type="text" class="inputField" ng-model="masterName"/></td>
+                <br>
+            <tr>
+                <td>Your Name:</td>
+                <td><input type="text" class="inputField" ng-model="playerName"/></td>
+                <br>
+            <tr>
+                <td colspan="2"><br/>
+                    <center><input type="submit" class="button" value="JOIN"/></center>
+                </td>
+            </tr>
         </table>
     </form>
 </div>
