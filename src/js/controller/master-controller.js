@@ -1,7 +1,5 @@
 var uno = angular.module('uno', []);
-var gameMaster = require('game-master.js');
-var net = require('net');
-
+var config = require('uno-config');
 
 uno.controller('startCtrl', function ($scope, $http) {
     $scope.masterName = "me";
@@ -11,7 +9,8 @@ uno.controller('startCtrl', function ($scope, $http) {
 
     $scope.createGame = function () {
         var data = {noOfPacks: $scope.noOfPacks, noOfPlayers: $scope.noOfPlayers, masterName: $scope.masterName};
-        $http({method: 'post', url: 'http://uno-step2013.rhcloud.com/startGame', data: data}).success(function () {
+        var url = config.host + 'startGame';
+        $http({method: 'post', url: url, data: data}).success(function () {
             $scope.gameNotCreated = false;
         });
     }

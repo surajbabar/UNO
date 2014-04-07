@@ -1,17 +1,19 @@
+var config = require('uno-config');
+
 angular.module('clientController').controller('joinCtrl', function ($scope, $http, $location, $route, playerService) {
     $scope.masterName = "me";
     $scope.playerName = "add";
     $scope.amIJoined = false;
     $scope.joinGame = function () {
         var data = {playerName: $scope.playerName, masterName: $scope.masterName};
-        $http({method: 'post', url: 'http://uno-step2013.rhcloud.com/joinGame', data: data}).success(function () {
+        $http({method: 'post', url: config.host + 'joinGame', data: data}).success(function () {
             $scope.amIJoined = true;
         });
 
         function makeGetRequest() {
-            console.log(data)
-            $http({method: 'get', url: 'http://uno-step2013.rhcloud.com/snapshot', params: data}).success(function (data) {
-                if(data!='')
+            var url = config.host + 'snapshot';
+            $http({method: 'get', url: url, params: data}).success(function (data) {
+                if (data != '')
                     switchToPlayerScreen(data);
             });
         }
