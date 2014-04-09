@@ -2,8 +2,8 @@
     "name": "UNO",
     "main": "src/view/index.html",
     "window": {
-        "width": 1480,
-        "height": 800,
+        "width": 1275,
+        "height": 715,
         "toolbar": false,
         "position": "center"
     },

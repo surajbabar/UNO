@@ -1,39 +1,48 @@
+
 #cardsLeft {
     position: fixed;
-    height: 110px;
-    width: 500px;
-    left:150px;
+    height: 130px;
+    width: 420px;
+    left:500px;
     overflow-x: auto;
     overflow-y: hidden;
     display: inline;
 }
-.dummyCard {
-    height: 100px;
+#dummyCard {
+    height: 120px;
     width: 80px;
     float: left;
     font-weight: bold;
 }
 #eachPlayerResult{
-    height:120px;
+    height:140px;
     border-color: white;
     border-width: 5px;
 }
 #playerName {
     position: fixed;
-    left:20px;
-    font-size: 110%;
+    font-size: 40px;
+    left: 200px;
+
 }
 #playerPoints {
     position: fixed;
-    left: 100px;
-    font-size: 110%;
+    left: 400px;
+    font-size: 40px;
 }
-#playerDetails{
-    top: 200px;
-    left: 100px;
-}
+
 #resultBoard{
-    width: 1250px;
-    height: 705px;
-    background-color: gray;
+    width: 1270px;
+    height: 710px;
+    background-color: darkred;
+    color: white;
+
+}
+#collectingResult{
+    top: 20px;
+    left: 200px;
+    font-size:40px;
+    color: white;
+    font-family: helvetica;
+
 }

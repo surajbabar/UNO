@@ -1,8 +1,10 @@
+
 #board {
     width: 1250px;
-    height: 705px;
+    height: 700px;
     background-color: gray;
 }
+
 
 .turn {
     margin-right: 30px;

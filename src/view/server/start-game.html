@@ -8,7 +8,7 @@
 
 <body>
 <div ng-app="uno" ng-controller="startCtrl">
-    <div class="rightDiv" ng-show="gameNotCreated">
+    <div class="centerDiv" ng-show="gameNotCreated">
         <form ng-submit="createGame()">
             <table class="getDetails">
                 <tr>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="notifyGameStart" ng-show="!gameNotCreated">
-        <label id="startInfo">Game created by {{masterName}} for {{noOfPlayers}} players with {{noOfPacks}} pack</label>
+        <label>Game created by {{masterName}} for {{noOfPlayers}} players with {{noOfPacks}} pack</label>
     </div>
 </div>
 </body>
