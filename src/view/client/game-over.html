@@ -1,12 +1,16 @@
-<div id="playerDetails" ng-repeat="player in players">
-	<div id="eachPlayerResult">
-        <label id="playerName">{{player.name}}</label>
-        <label id="playerPoints">{{player.points}}</label>
-        <div id="cardsLeft">
-	        <div  ng-repeat="card in player.cards" ng-style="numberOfCardsLeft(player)">
-	        	<button class="dummyCard" ng-style="{background:'{{card.color}}'}"
-	        	 disabled>{{card.sign}}</button>
-	    	</div>
-    	</div>
-	</div>
+<div id="resultBoard">
+    <div id="playerDetails" ng-repeat="player in players">
+        <div id="eachPlayerResult">
+            <label id="playerName">{{player.name}}</label>
+            <label id="playerPoints">{{player.points}}</label>
+
+            <div id="cardsLeft">
+                <div ng-repeat="card in player.cards" ng-style="numberOfCardsLeft(player)">
+                    <button class="dummyCard" ng-style="{background:'{{card.color}}'}"
+                            disabled>{{card.sign}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -12,4 +12,4 @@ uno.controller('gameOverCtrl', function ($scope, playerService) {
         };
     });
 
-})
+});

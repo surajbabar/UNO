@@ -65,6 +65,10 @@
     position: fixed;
     left: 350px;
     top: 200px;
+    width: 115px;
+    height: 165px;
+    padding-top: 5px;
+    padding-left: 5px;
 }
 
 #openPile {

@@ -32,3 +32,8 @@
     top: 200px;
     left: 100px;
 }
+#resultBoard{
+    width: 1250px;
+    height: 705px;
+    background-color: gray;
+}

@@ -10,16 +10,12 @@ body{
     font-family: helvetica;
 }
 
-.inputField{
-    width: 250px;
-    font-size: 25px;
-}
-
 .getDetails {
-    color:black;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
     font-family: helvetica;
+    color: white;
+
 }
 
 .notifyGameStart {
@@ -27,20 +23,44 @@ body{
     left: 200px;
     font-size:40px;
     color: white;
-}
 
+}
 #startInfo {
     font-family: helvetica;
 }
 
 .centerDiv{
-    width: 600px;
+    width: 500px;
     height: 600px;
     position: absolute;
     top:200px;
     left: 400px;
     margin: auto;
-    border-radius:20px ;
+}
+.rightDiv{
+    width: 500px;
+    height: 350px;
+    position: absolute;
+    top:0px;
+    left: 900px;
+    margin: auto;
+}
+#join {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#chooseMaster {
+    top: 30px;
+    left: 10px;
+}
+.gameMaster {
+    color: white;
+    font-size: 20px;
+    font-family: helvetica;
+    width: 200px;
 }
 
 .button {
@@ -50,15 +70,7 @@ body{
     font-size: 28px;
     font-weight: bolder;
 }
-
-#chooseMaster{
-    float: right;
-    background-color: gray;
-    width: 200px;
-}
-
-.radioSelect{
+.inputField{
+    width: 250px;
     font-size: 25px;
-    color: white;
 }
-
