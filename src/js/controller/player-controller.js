@@ -88,6 +88,7 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
 
     var drawCardTimeout;
     var chooseColorTimeout;
+    var catchPlayerTimeout;
 
     $scope.setColor = function (color) {
         $scope.openColorChooser = false;
@@ -156,25 +157,28 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
     };
 
     $scope.catchPlayer = function (player) {
-//        var playerIndex = snapshot.playerSummaries.indexOf(player);
-//        if (playerIndex == snapshot.myPlayerIndex)
-//            return;
-//        if (player.noOfCards != 1) {
-//            $scope.warningMessage = player.name + " has more than one card";
-//            $scope.showWarning = true;
-//            return;
-//        }
-//        channel.write(JSON.stringify({type: 'playerCaught', playerIndex: playerIndex}));
+        var playerIndex = snapshot.playerSummaries.indexOf(player);
+        if (playerIndex == snapshot.myPlayerIndex)
+            return;
+        if (player.noOfCards != 1) {
+            $scope.warningMessage = player.name + " has more than one card";
+            $scope.showWarning = true;
+            return;
+        }
+        function sendCatchAction() {
+            sendPlayerAction('catchPlayer', {caughtPlayerName: player.name});
+        }
+
+        catchPlayerTimeout = setTimeout(sendCatchAction, 1000);
     };
 
     $scope.declareUno = function () {
-//        if (snapshot.myCards.length != 1) {
-//            $scope.warningMessage = "you can say uno if you have only one card";
-//            $scope.showWarning = true;
-//            return;
-//        }
-//        channel.write(JSON.stringify({type: 'declaredUno' }));
-//        $scope.players[snapshot.myPlayerIndex].noOfCards = "uno";
+        if (snapshot.myCards.length != 1) {
+            $scope.warningMessage = "you can say uno if you have only one card";
+            $scope.showWarning = true;
+            return;
+        }
+        sendPlayerAction('uno', {});
     };
 
     function switchToGameOverScreen(data) {
