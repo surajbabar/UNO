@@ -203,5 +203,5 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
         $http({method: 'get', url: url, params: playerDetails}).success(onResponse);
     }
 
-    var continuousRequestForSnapshot = setInterval(makeGetRequest, 1000);
+    var continuousRequestForSnapshot = setInterval(makeGetRequest, 500);
 });
