@@ -17,11 +17,11 @@
                     <br>
                 <tr>
                     <td>Packs:</td>
-                    <td><input type="text" class="inputField" ng-model="noOfPacks"/></td>
+                    <td><input type="number" class="inputField" ng-model="noOfPacks"/></td>
                     <br>
                 <tr>
                     <td>Players:</td>
-                    <td><input type="text" class="inputField" ng-model="noOfPlayers"/></td>
+                    <td><input type="number" class="inputField" ng-model="noOfPlayers"/></td>
                     <br>
                 <tr>
                     <td colspan="2"><br/>
@@ -36,8 +36,10 @@
         <label>{{masterName}} is already in use as a Game Master. Please choose another Master Name.</label>
     </div>
 
-    <div class="notifyGameStart" ng-show="!gameNotCreated">
+    <div class="notifyGameStart" ng-show="gameCreated">
         <label>Game created by {{masterName}} for {{noOfPlayers}} players with {{noOfPacks}} pack</label>
+        <br>
+        <input type="button" id="clear" ng-click="clearData()" value="Close Game">
     </div>
 </div>
 </body>
