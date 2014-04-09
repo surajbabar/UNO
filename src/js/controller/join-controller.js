@@ -7,7 +7,7 @@ angular.module('clientController').controller('joinCtrl', function ($scope, $htt
     });
 
     $scope.masterName = "me";
-    $scope.playerName = "add";
+    $scope.playerName = "player";
     $scope.amIJoined = false;
     $scope.joinGame = function () {
         var playerData = {playerName: $scope.playerName, masterName: $scope.masterName};
