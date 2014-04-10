@@ -17,9 +17,9 @@ body{
 }
 
 .notifyGameStart {
-    top: 20px;
+    top: 40px;
     left: 200px;
-    font-size:40px;
+    font-size:30px;
     color: white;
 
 }

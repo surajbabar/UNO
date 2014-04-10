@@ -3,7 +3,7 @@
     position: fixed;
     height: 130px;
     width: 420px;
-    left:500px;
+    left:700px;
     overflow-x: auto;
     overflow-y: hidden;
     display: inline;
@@ -20,28 +20,39 @@
     border-width: 5px;
 }
 #playerName {
-    position: fixed;
+    position:relative;
     font-size: 40px;
     left: 200px;
 
 }
 #playerPoints {
-    position: fixed;
+    position: relative;
     left: 400px;
     font-size: 40px;
 }
 
 #resultBoard{
-    width: 1270px;
-    height: 710px;
-    background-color: darkred;
+    width: 1275px;
+    height: 646px;
+    background-color:indianred;
+    color: white;
+    overflow-x: hidden;
+    overflow-y:auto;
+
+}
+/*#allPlayersResult {*/
+    /*width: 1250px;*/
+    /*background-color: powderblue;*/
+/*}*/
+#collectingResult{
+    top: 100px;
+    left: 200px;
+    font-size:20px;
     color: white;
 
 }
-#collectingResult{
-    top: 20px;
-    left: 200px;
-    font-size:40px;
-    color: white;
-
+#gameOver {
+    background-image: url("../images/gameOver.png");
+    height: 70px;
+    background-repeat: no-repeat;
 }

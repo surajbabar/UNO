@@ -1,9 +1,10 @@
+<div id="gameOver"></div>
 <div id="collectingResult" ng-hide="obtainedResult">
     PLEASE WAIT...</br>Collecting points of players...
 </div>
 
 <div id="resultBoard" ng-show="obtainedResult">
-    <div ng-repeat="player in players">
+    <div id="allPlayersResult" ng-repeat="player in players" ng-style="numberOfPlayers(players)">
         <div id="eachPlayerResult">
             <label id="playerName">{{player.name}}</label>
             <label id="playerPoints">{{player.points}}</label>

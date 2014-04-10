@@ -3,7 +3,7 @@ var uno = angular.module('clientController');
 uno.controller('gameOverCtrl', function ($scope, playerService) {
     var result = playerService.getGameResult();
     $scope.players = result.playerResults;
-    $scope.obtainedResult=false;
+    $scope.obtainedResult = false;
 
     var getProperImage = function (card) {
         var colors = {
@@ -16,12 +16,12 @@ uno.controller('gameOverCtrl', function ($scope, playerService) {
         return colors[card.color] || card.color;
     };
 
-    $scope.$watch("players.cards", function () {
-        if(!$scope.obtainedResult){
-            setTimeout(function(){
-                $scope.obtainedResult=true;
+    $scope.$watch("players", function () {
+        if (!$scope.obtainedResult) {
+            setTimeout(function () {
+                $scope.obtainedResult = true;
                 $scope.$apply();
-            },5000);
+            }, 5000);
 
         }
 
@@ -32,6 +32,12 @@ uno.controller('gameOverCtrl', function ($scope, playerService) {
         $scope.numberOfCardsLeft = function (player) {
             return {
                 width: (player.cards.length * 85) + 'px'
+            };
+        };
+
+        $scope.numberOfPlayers = function (players) {
+            return {
+                height: (players.size * 150) + 'px'
             };
         };
     });
