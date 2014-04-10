@@ -60,17 +60,19 @@ var update = function (snapshot, $scope) {
 uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerService) {
     $scope.activityLog = "";
     $scope.hint = "";
+    var drawCardTimeout;
     var colorAfterWildCard = '';
+
     var playerDetails = playerService.getPlayerDetails();
-
     var snapshot = playerService.getData();
-    update(snapshot, $scope);
 
+    update(snapshot, $scope);
     var sendPlayerAction = function (path, actionData) {
         actionData.playerName = playerDetails.playerName;
         actionData.masterName = playerDetails.masterName;
         $http({method: 'post', url: config.host + path, data: actionData});
     };
+
 
     $scope.$watch("myCards", function () {
         $scope.numberOfCards = function () {
@@ -85,10 +87,6 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
             return {"background-image": 'url(' + getProperImage(card) + ')'};
         };
     });
-
-    var drawCardTimeout;
-    var chooseColorTimeout;
-    var catchPlayerTimeout;
 
     $scope.setColor = function (color) {
         $scope.openColorChooser = false;
@@ -141,7 +139,7 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
             }
             sendPlayerAction('playCard', playedCardInfo);
         };
-        chooseColorTimeout = setTimeout(validateColorAndSend, 2000);
+        setTimeout(validateColorAndSend, 2000);
     };
 
     $scope.drawCard = function () {
@@ -169,7 +167,7 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
             sendPlayerAction('catchPlayer', {caughtPlayerName: player.name});
         }
 
-        catchPlayerTimeout = setTimeout(sendCatchAction, 1000);
+        setTimeout(sendCatchAction, 1000);
     };
 
     $scope.declareUno = function () {

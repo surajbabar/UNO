@@ -25,11 +25,12 @@ uno.controller('startCtrl', function ($scope, $http) {
     $scope.clearData = function () {
         dataCleared = true;
         $http({method: 'post', url: config.host + 'gameOver', data: {master: $scope.masterName}});
+        window.close();
     }
 
     var window = gui.Window.get();
     window.on('close', function () {
-        if (!dataCleared && $scope.gameCreated)
+        if ($scope.gameCreated)
             $http({method: 'post', url: config.host + 'gameOver', data: {master: $scope.masterName}});
         this.close(true);
     });
