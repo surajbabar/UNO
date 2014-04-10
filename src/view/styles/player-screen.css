@@ -1,7 +1,7 @@
 
 #board {
-    width: 1250px;
-    height: 700px;
+    width: 1275px;
+    height: 715px;
     background-color: gray;
 }
 
@@ -45,11 +45,14 @@
 
 #activityLog {
     position: fixed;
-    left: 970px;
+    left: 960px;
     top: 10px;
     font-size: 16px;
-    font-style: normal;
-    font: Helvetica;
+    border: 2px;
+    border-color: #000000;
+    background-color: #ffffff;
+    height: 690px;
+    width: 300px;
 }
 
 #cards {
