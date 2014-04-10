@@ -13,6 +13,7 @@
     width: 80px;
     float: left;
     font-weight: bold;
+    color: #000000;
 }
 #eachPlayerResult{
     height:140px;
@@ -40,10 +41,7 @@
     overflow-y:auto;
 
 }
-/*#allPlayersResult {*/
-    /*width: 1250px;*/
-    /*background-color: powderblue;*/
-/*}*/
+
 #collectingResult{
     top: 100px;
     left: 200px;
@@ -54,5 +52,4 @@
 #gameOver {
     background-image: url("../images/gameOver.png");
     height: 70px;
-    background-repeat: no-repeat;
 }
