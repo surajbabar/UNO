@@ -49,9 +49,8 @@ var update = function (snapshot, $scope) {
 
     $scope.openCard = snapshot.openCard;
     $scope.openPileProp = {"background-image": 'url(' + getProperImage(snapshot.openCard) + ')'};
-    $scope.hint = snapshot.hint;
+    $scope.status = snapshot.status;
     $scope.directionSign = snapshot.isInAscendingOrder ? "=>" : "<=";
-    $scope.currentPlayer = snapshot.playerSummaries[snapshot.currentPlayerIndex].name;
     $scope.enable = snapshot.playerSummaries[snapshot.currentPlayerIndex] != snapshot.playerSummaries[snapshot.myPlayerIndex];
     $scope.disableDraw = snapshot.disableDraw || $scope.enable;
     $scope.drawBackground = ($scope.disableDraw == false) ? {"background-color": "green"} : {"background-color": "transparent"};
