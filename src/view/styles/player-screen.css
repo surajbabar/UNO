@@ -53,6 +53,8 @@
     background-color: #ffffff;
     height: 690px;
     width: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #cards {
