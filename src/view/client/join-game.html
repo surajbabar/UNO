@@ -4,14 +4,14 @@
         <input type="radio" class="radioSelect" name="gameMaster" value="{{master}}">{{master}}</input>
     </div>
 </div>
-<div class="rightDiv" ng-hide="amIJoined">
+<div class="centerDiv" ng-hide="amIJoined">
 
     <form ng-submit="joinGame()">
         <table class="getDetails">
             <tr><td>Game Master: </td>
-                <td><input type="text" class="inputField" ng-model="masterName"/></td><br>
+                <td><input type="text" class="inputDetail" ng-model="masterName"/></td><br>
             <tr><td>Your Name: </td>
-                <td><input type="text" class="inputField" ng-model="playerName"/></td><br>
+                <td><input type="text" class="inputDetail" ng-model="playerName"/></td><br>
             <tr><td colspan = "2"><br/><center><input type="submit" class="button" value="JOIN"/></center></td></tr>
         </table>
     </form>

@@ -1,16 +1,17 @@
+body{
+    background-image: url("../images/uno1.png");
+}
 
 .renderButton{
     width: 200px;
     height: 40px;
-    font-size: 115%;
+    font-size: 16px;
     margin-top: 50px;
-    font-family: helvetica;
 }
 
 .getDetails {
     font-weight: bold;
     font-size: 30px;
-    font-family: helvetica;
     color: white;
 
 }
@@ -20,15 +21,7 @@
     left: 200px;
     font-size:40px;
     color: white;
-    font-family: helvetica;
-
-
 }
-body{
-    background-image: url("../images/uno1.png");
-}
-
-
 
 .centerDiv{
     width: 500px;
@@ -47,13 +40,13 @@ body{
 }
 #chooseMaster {
     top: 30px;
-    left: 10px;
+    left: 100px;
 }
 .gameMaster {
     color: white;
     font-size: 20px;
-    font-family: helvetica;
     width: 200px;
+    left: 100px;
 }
 
 .button {
@@ -63,9 +56,11 @@ body{
     font-size: 28px;
     font-weight: bolder;
 }
-.inputField{
+.inputDetail{
     width: 250px;
     font-size: 25px;
+    color: #000000;
+
 }
 
 #clear{
