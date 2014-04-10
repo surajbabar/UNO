@@ -10,8 +10,12 @@
             </div>
         </div>
 
-        <textarea id="activityLog" cols="26" rows="38" onfocus="scrollDown(this)"
-                  readonly>{{activityLog}}</textarea>
+        <table class="table table-hover" id="activityLog">
+            <tr ng-repeat="log in activityLog">
+                   <td>{{log}}</td>
+            </tr>
+        </table>
+
 
         <div id="cards">
             <div ng-repeat="card in myCards" ng-style="numberOfCards()">

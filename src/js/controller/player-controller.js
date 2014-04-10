@@ -45,7 +45,8 @@ var update = function (snapshot, $scope) {
     setProperColors(snapshot.myCards);
     $scope.myCards = snapshot.myCards;
     if (snapshot.currentTurnLog != '')
-        $scope.activityLog = snapshot.currentTurnLog + '\n---------------------------\n' + $scope.activityLog;
+        $scope.activityLog.splice(0, 0, snapshot.currentTurnLog);
+
     $scope.openCard = snapshot.openCard;
     $scope.openPileProp = {"background-image": 'url(' + getProperImage(snapshot.openCard) + ')'};
     $scope.hint = snapshot.hint;
@@ -58,7 +59,7 @@ var update = function (snapshot, $scope) {
 };
 
 uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerService) {
-    $scope.activityLog = "";
+    $scope.activityLog = [];
     $scope.hint = "";
     var colorAfterWildCard = '';
     var playerDetails = playerService.getPlayerDetails();
