@@ -4,18 +4,22 @@
 </div>
 
 <div id="resultBoard" ng-show="obtainedResult">
-    <div id="allPlayersResult" ng-repeat="player in players" ng-style="numberOfPlayers(players)">
-        <div id="eachPlayerResult">
-            <label id="playerName">{{player.name}}</label>
-            <label id="playerPoints">{{player.points}}</label>
+    <table class="table table-hover">
+        <tr id="eachPlayerResult" ng-repeat="player in players">
+            <td id="playerName">{{player.name}}</td>
 
-            <div id="cardsLeft">
-                <div ng-repeat="card in player.cards" ng-style="numberOfCardsLeft(player)">
-                    <button class="card" id="dummyCard"
-                            ng-style="setCardProperties(card)" disabled>{{card.sign}}
-                    </button>
+            <td id="playerPoints">{{player.points}}</td>
+
+            <td>
+                <div id="cardsLeft">
+                    <div ng-repeat="card in player.cards" ng-style="numberOfCardsLeft(player)">
+                        <button class="card" id="dummyCard"
+                                ng-style="setCardProperties(card)" disabled>{{card.sign}}
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </td>
+
+        </tr>
+    </table>
 </div>
