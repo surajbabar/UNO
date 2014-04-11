@@ -1,10 +1,8 @@
 
 #cardsLeft {
     height: 120px;
-    width: 200px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: inline;
+    width: 420px;
+    overflow-x: scroll;
 }
 #dummyCard {
     height: 120px;
@@ -14,7 +12,7 @@
     color: #000000;
 }
 #eachPlayerResult{
-    height:120px;
+    height:130px;
     border-color: white;
     border-width: 5px;
 }

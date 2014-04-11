@@ -1,6 +1,5 @@
 var uno = angular.module('clientController');
 
-
 uno.controller('gameOverCtrl', function ($scope, playerService) {
     var result = playerService.getGameResult();
     $scope.players = result.playerResults;

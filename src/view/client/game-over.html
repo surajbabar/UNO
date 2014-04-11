@@ -12,10 +12,12 @@
 
             <td>
                 <div id="cardsLeft">
-                    <div ng-repeat="card in player.cards" ng-style="numberOfCardsLeft(player)">
-                        <button class="card" id="dummyCard"
-                                ng-style="setCardProperties(card)" disabled>{{card.sign}}
-                        </button>
+                    <div>
+                        <div ng-repeat="card in player.cards" ng-style="numberOfCardsLeft(player)">
+                            <button class="card" id="dummyCard"
+                                    ng-style="setCardProperties(card)" disabled>{{card.sign}}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </td>
