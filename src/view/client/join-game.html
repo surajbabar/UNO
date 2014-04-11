@@ -5,7 +5,6 @@
     </div>
 </div>
 <div class="centerDiv" ng-hide="amIJoined">
-
     <form ng-submit="joinGame()">
         <table class="getDetails">
             <tr><td>Game Master: </td>
@@ -16,6 +15,15 @@
         </table>
     </form>
 </div>
+
+<div class="notifyGameStart" ng-show="inUse">
+    A player is already registered as name {{playerName}}.Choose another Name.
+</div>
+
+<div class="notifyGameStart" ng-show="full">
+    {{masterName}} already started the game.Please choose another.
+</div>
+
 <div class="notifyGameStart" ng-show="amIJoined">
     Please wait for other players to connect
 </div>

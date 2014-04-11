@@ -1,7 +1,6 @@
 var config = require('uno-config');
 
 angular.module('clientController').controller('joinCtrl', function ($scope, $http, $location, $route, playerService) {
-
     $http({method: 'get', url: config.host + 'mastersList/'}).success(function (data) {
         $scope.gameMasters = data;
     });
@@ -9,10 +8,22 @@ angular.module('clientController').controller('joinCtrl', function ($scope, $htt
     $scope.masterName = "me";
     $scope.playerName = "player";
     $scope.amIJoined = false;
+    $scope.inUse = false;
+    $scope.full = false;
     $scope.joinGame = function () {
         var playerData = {playerName: $scope.playerName, masterName: $scope.masterName};
         playerService.setPlayerDetails(playerData);
-        $http({method: 'post', url: config.host + 'joinGame', data: playerData}).success(function () {
+        $http({method: 'post', url: config.host + 'joinGame', data: playerData}).success(function (data) {
+            if (data == 'INUSE') {
+                $scope.inUse = true;
+                return;
+            }
+            if (data == 'FULL') {
+                $scope.full = true;
+                return;
+            }
+            $scope.inUse = false;
+            $scope.full = false;
             $scope.amIJoined = true;
         });
 
