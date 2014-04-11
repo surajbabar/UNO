@@ -35,7 +35,7 @@
         </div>
 
         <div class="card" id="openPile">
-            <button class="card" ng-style="openPileProp" disabled>
+            <button class="card" ng-style="getCardProperties(openCard)" disabled>
                 {{openCard.sign}}
             </button>
         </div>
@@ -46,13 +46,10 @@
             </textarea>
         </div>
 
-        <div id="turnWisePlayerName">
-            {{currentPlayer}}'s turn :
+        <div id="status">
+            {{status}}
+        </div>
 
-        </div>
-        <div id="hint">
-            {{hint}}
-        </div>
         <div>
             <button id="uno" ng-click="declareUno()" ng-disabled="openColorChooser">UNO</button>
         </div>

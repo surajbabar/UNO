@@ -44,14 +44,11 @@ var update = function (snapshot, $scope) {
     $scope.players = checkForUno(snapshot.playerSummaries);
     setProperColors(snapshot.myCards);
     $scope.myCards = snapshot.myCards;
-    if (snapshot.currentTurnLog != '')
+    if (snapshot.currentTurnLog != '' && $scope.activityLog[0] != snapshot.currentTurnLog)
         $scope.activityLog.splice(0, 0, snapshot.currentTurnLog);
-
     $scope.openCard = snapshot.openCard;
-    $scope.openPileProp = {"background-image": 'url(' + getProperImage(snapshot.openCard) + ')'};
-    $scope.hint = snapshot.hint;
+    $scope.status = snapshot.status;
     $scope.directionSign = snapshot.isInAscendingOrder ? "=>" : "<=";
-    $scope.currentPlayer = snapshot.playerSummaries[snapshot.currentPlayerIndex].name;
     $scope.enable = snapshot.playerSummaries[snapshot.currentPlayerIndex] != snapshot.playerSummaries[snapshot.myPlayerIndex];
     $scope.disableDraw = snapshot.disableDraw || $scope.enable;
     $scope.drawBackground = ($scope.disableDraw == false) ? {"background-color": "green"} : {"background-color": "transparent"};
@@ -73,7 +70,16 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
         actionData.masterName = playerDetails.masterName;
         $http({method: 'post', url: config.host + path, data: actionData});
     };
+    $scope.getCardProperties = function (card) {
+        var properties = {};
+        properties['background-image'] = 'url(' + getProperImage(card) + ')';
 
+        if (["url(../images/+4.png)", "url(../images/wild.png)"].indexOf(properties['background-image']) > -1)
+            properties.color = 'transparent';
+
+        return properties;
+
+    }
 
     $scope.$watch("myCards", function () {
         $scope.numberOfCards = function () {
@@ -85,7 +91,7 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
             return card.color == 'black' ? '' : card.sign;
         };
         $scope.setCardProperties = function (card) {
-            return {"background-image": 'url(' + getProperImage(card) + ')'};
+            return $scope.getCardProperties(card);
         };
     });
 

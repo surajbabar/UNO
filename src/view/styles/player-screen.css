@@ -85,7 +85,7 @@
     text-align: center;
 }
 
-#hint {
+#status {
     position: fixed;
     left: 450px;
     top: 400px;
@@ -93,6 +93,7 @@
     width: 300px;
     font-size: 25px;
     font-weight: bold;
+    color: #ffffff;
 }
 
 #turnWisePlayerName {
