@@ -44,7 +44,7 @@ var update = function (snapshot, $scope) {
     $scope.players = checkForUno(snapshot.playerSummaries);
     setProperColors(snapshot.myCards);
     $scope.myCards = snapshot.myCards;
-    if (snapshot.currentTurnLog != '')
+    if (snapshot.currentTurnLog != '' && $scope.activityLog[0] != snapshot.currentTurnLog)
         $scope.activityLog.splice(0, 0, snapshot.currentTurnLog);
     $scope.openCard = snapshot.openCard;
     $scope.status = snapshot.status;
