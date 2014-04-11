@@ -1,12 +1,8 @@
 
 #cardsLeft {
-    position: fixed;
-    height: 130px;
+    height: 120px;
     width: 420px;
-    left:700px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: inline;
+    overflow-x: scroll;
 }
 #dummyCard {
     height: 120px;
@@ -16,27 +12,23 @@
     color: #000000;
 }
 #eachPlayerResult{
-    height:140px;
+    height:130px;
     border-color: white;
     border-width: 5px;
 }
 #playerName {
-    position:relative;
     font-size: 40px;
-    left: 200px;
 
 }
 #playerPoints {
-    position: relative;
-    left: 400px;
     font-size: 40px;
 }
 
 #resultBoard{
     width: 1275px;
     height: 646px;
-    background-color:indianred;
-    color: white;
+    background-color:#ffffff;
+    color: #000000;
     overflow-x: hidden;
     overflow-y:auto;
 
@@ -53,3 +45,5 @@
     background-image: url("../images/gameOver.png");
     height: 70px;
 }
+
+
