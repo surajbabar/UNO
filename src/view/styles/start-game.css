@@ -13,7 +13,6 @@ body{
     font-weight: bold;
     font-size: 30px;
     color: white;
-
 }
 
 .notifyGameStart {
@@ -39,15 +38,15 @@ body{
     font-size: 20px;
     font-weight: bold;
 }
-#chooseMaster {
+.chooseMaster {
     top: 30px;
     left: 100px;
+    background-color: #000000;
 }
 .gameMaster {
     color: white;
     font-size: 20px;
-    width: 200px;
-    left: 100px;
+    margin-left: 20px;
 }
 
 .round-corner-button {
@@ -61,7 +60,25 @@ body{
     width: 250px;
     font-size: 25px;
     color: #000000;
-
 }
 
+input[type=radio] {
+    display:none;
+    margin:10px;
+}
 
+input[type=radio] + label {
+    display:inline-block;
+    margin:-2px;
+    padding: 4px 12px;
+    width: 150px;
+    text-align: center;
+    background-color: #d0d0d0;
+    border-color: #ddd;
+    float: left;
+}
+
+input[type=radio]:checked + label {
+    background-image: none;
+    background-color:#46b8da;
+}

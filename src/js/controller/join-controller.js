@@ -3,9 +3,13 @@ var config = require('uno-config');
 angular.module('clientController').controller('joinCtrl', function ($scope, $http, $location, $route, playerService) {
     $http({method: 'get', url: config.host + 'mastersList/'}).success(function (data) {
         $scope.gameMasters = data;
+        $scope.masterName = $scope.gameMasters[0];
     });
 
-    $scope.masterName = "me";
+    $scope.changeMaster = function (masterNm) {
+        $scope.masterName = masterNm;
+    };
+
     $scope.playerName = "player";
     $scope.amIJoined = false;
     $scope.inUse = false;

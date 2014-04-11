@@ -1,17 +1,30 @@
 <div class="gameMaster" ng-hide="amIJoined">
     <label>CHOOSE A GAME</label>
-    <div id="chooseMaster" ng-repeat="master in gameMasters">
-        <input type="radio" class="radioSelect" name="gameMaster" value="{{master}}">{{master}}</input>
+
+    <div id="chooseMaster" ng-repeat="masterNm in gameMasters">
+        <input type="radio" id="{{masterNm}}" name="gameMaster" ng-click="changeMaster(masterNm)"/>
+        <label for="{{masterNm}}"> {{masterNm}} </label>
     </div>
 </div>
+
 <div class="centerDiv" ng-hide="amIJoined">
     <form ng-submit="joinGame()">
         <table class="getDetails">
-            <tr><td>Game Master: </td>
-                <td><input type="text" class="inputDetail" ng-model="masterName"/></td><br>
-            <tr><td>Your Name: </td>
-                <td><input type="text" class="inputDetail" ng-model="playerName"/></td><br>
-            <tr><td colspan = "2"><br/><center><input type="submit" class="round-corner-button" value="JOIN"/></center></td></tr>
+            <tr>
+                <td>Game Master:</td>
+                <td><input type="text" class="inputDetail" ng-model="masterName" ng-disabled="true"/></td>
+                <br>
+            </tr>
+            <tr>
+                <td>Your Name:</td>
+                <td><input type="text" class="inputDetail" ng-model="playerName"/></td>
+                <br>
+            </tr>
+            <tr>
+                <td colspan="2"><br/>
+                    <center><input type="submit" class="round-corner-button" value="JOIN" ng-disabled="!masterName"/></center>
+                </td>
+            </tr>
         </table>
     </form>
 </div>
