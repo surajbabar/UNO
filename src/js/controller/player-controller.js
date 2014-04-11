@@ -46,9 +46,7 @@ var update = function (snapshot, $scope) {
     $scope.myCards = snapshot.myCards;
     if (snapshot.currentTurnLog != '')
         $scope.activityLog.splice(0, 0, snapshot.currentTurnLog);
-
     $scope.openCard = snapshot.openCard;
-    $scope.openPileProp = {"background-image": 'url(' + getProperImage(snapshot.openCard) + ')'};
     $scope.status = snapshot.status;
     $scope.directionSign = snapshot.isInAscendingOrder ? "=>" : "<=";
     $scope.enable = snapshot.playerSummaries[snapshot.currentPlayerIndex] != snapshot.playerSummaries[snapshot.myPlayerIndex];
@@ -72,7 +70,16 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
         actionData.masterName = playerDetails.masterName;
         $http({method: 'post', url: config.host + path, data: actionData});
     };
+    $scope.getCardProperties = function (card) {
+        var properties = {};
+        properties['background-image'] = 'url(' + getProperImage(card) + ')';
 
+        if (["url(../images/+4.png)", "url(../images/wild.png)"].indexOf(properties['background-image']) > -1)
+            properties.color = 'transparent';
+
+        return properties;
+
+    }
 
     $scope.$watch("myCards", function () {
         $scope.numberOfCards = function () {
@@ -84,7 +91,7 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
             return card.color == 'black' ? '' : card.sign;
         };
         $scope.setCardProperties = function (card) {
-            return {"background-image": 'url(' + getProperImage(card) + ')'};
+            return $scope.getCardProperties(card);
         };
     });
 
