@@ -23,9 +23,7 @@
         <div id="cards">
             <div ng-repeat="card in myCards" ng-style="numberOfCards()">
                 <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}} || openColorChooser"
-                        ng-style="setCardProperties(card)">{{card.sign}}
-                </button>
-
+                        ng-style="setCardProperties(card)"/>
             </div>
         </div>
 
@@ -35,9 +33,7 @@
         </div>
 
         <div class="card" id="openPile">
-            <button class="card" ng-style="getCardProperties(openCard)" disabled>
-                {{openCard.sign}}
-            </button>
+            <button class="card" ng-style="getCardProperties(openCard)" disabled/>
         </div>
 
         <div id="warning">

@@ -1,12 +1,5 @@
 var uno = angular.module('clientController');
 
-var setProperColors = function (myCards) {
-    myCards.forEach(function (card) {
-        card.color = getProperImage(card);
-    });
-    return myCards;
-};
-
 var checkForUno = function (playerSummaries) {
     playerSummaries.forEach(function (summary) {
         if (summary.unoStatus)
@@ -16,33 +9,13 @@ var checkForUno = function (playerSummaries) {
 };
 
 var getProperImage = function (card) {
-    var colors = {
-        "blue": "../images/blue.png",
-        "red": "../images/red.png",
-        "green": "../images/green.png",
-        "yellow": "../images/yellow.png",
-        "black": card.sign == "Wild" ? "../images/wild.png" : "../images/+4.png"
-    };
-    return colors[card.color] || card.color;
-};
-
-var getColorNameFor = function (color) {
-    var colors = {
-        "../images/blue.png": "blue",
-        "../images/red.png": "red",
-        "../images/green.png": "green",
-        "../images/yellow.png": "yellow",
-        "../images/wild.png": "black",
-        "../images/+4.png": "black"
-
-    };
-    return colors[color] || color;
-
+    var cardPath = '../images/COLOR/SIGN.jpg';
+    cardPath = cardPath.replace('COLOR',card.color).replace('SIGN',card.sign);
+    return cardPath;
 };
 
 var update = function (snapshot, $scope) {
     $scope.players = checkForUno(snapshot.playerSummaries);
-    setProperColors(snapshot.myCards);
     $scope.myCards = snapshot.myCards;
     if (snapshot.currentTurnLog != '' && $scope.activityLog[0] != snapshot.currentTurnLog)
         $scope.activityLog.splice(0, 0, snapshot.currentTurnLog);
@@ -57,7 +30,6 @@ var update = function (snapshot, $scope) {
 
 uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerService) {
     $scope.activityLog = [];
-    $scope.hint = "";
     var drawCardTimeout;
     var colorAfterWildCard = '';
 
@@ -65,20 +37,17 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
     var snapshot = playerService.getData();
 
     update(snapshot, $scope);
+
     var sendPlayerAction = function (path, actionData) {
         actionData.playerName = playerDetails.playerName;
         actionData.masterName = playerDetails.masterName;
         $http({method: 'post', url: config.host + path, data: actionData});
     };
+
     $scope.getCardProperties = function (card) {
         var properties = {};
         properties['background-image'] = 'url(' + getProperImage(card) + ')';
-
-        if (["url(../images/+4.png)", "url(../images/wild.png)"].indexOf(properties['background-image']) > -1)
-            properties.color = 'transparent';
-
         return properties;
-
     }
 
     $scope.$watch("myCards", function () {
@@ -101,11 +70,6 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
     };
 
     $scope.playCard = function (card) {
-        card.color = getColorNameFor(card.color);
-        snapshot.myCards.forEach(function (card) {
-            card.color = getColorNameFor(card.color);
-        });
-
         if (!cardModel.canFollowCard(card, snapshot)) {
             $scope.warningMessage = "you can not  play this card.";
             $scope.showWarning = true;
@@ -165,6 +129,7 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
         var playerIndex = snapshot.playerSummaries.indexOf(player);
         if (playerIndex == snapshot.myPlayerIndex)
             return;
+
         if (player.noOfCards != 1) {
             $scope.warningMessage = player.name + " has more than one card";
             $scope.showWarning = true;
