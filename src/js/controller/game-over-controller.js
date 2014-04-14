@@ -1,9 +1,18 @@
 var uno = angular.module('clientController');
 
+
 uno.controller('gameOverCtrl', function ($scope, playerService) {
     var result = playerService.getGameResult();
+
+    result.playerResults.sort(function(playerResult1,playerResult2){
+        if(playerResult1.points > playerResult2.points)
+            return 1;
+        return -1;
+
+    });
     $scope.players = result.playerResults;
     $scope.obtainedResult = false;
+
 
     var getProperImage = function (card) {
         var cardPath = '../images/COLOR/SIGN.jpg';
@@ -16,7 +25,7 @@ uno.controller('gameOverCtrl', function ($scope, playerService) {
             setTimeout(function () {
                 $scope.obtainedResult = true;
                 $scope.$apply();
-            }, 5000);
+            }, 0000);
 
         }
 
