@@ -23,7 +23,7 @@ uno.controller('gameOverCtrl', function ($scope, playerService) {
             setTimeout(function () {
                 $scope.obtainedResult = true;
                 $scope.$apply();
-            }, 0000);
+            }, 5000);
 
         }
 
