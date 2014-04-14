@@ -21,8 +21,8 @@
 
 
         <div id="cards">
-            <div ng-repeat="card in myCards" ng-style="numberOfCards()">
-                <button class="card" ng-click="playCard(card)" ng-disabled="{{enable}} || openColorChooser"
+            <div ng-style="numberOfCards()">
+                <button ng-repeat="card in myCards" class="card" ng-click="playCard(card)" ng-disabled="{{enable}} || openColorChooser"
                         ng-style="setCardProperties(card)"/>
             </div>
         </div>
