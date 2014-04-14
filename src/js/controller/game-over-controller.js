@@ -5,11 +5,9 @@ uno.controller('gameOverCtrl', function ($scope, playerService) {
     var result = playerService.getGameResult();
 
     result.playerResults.sort(function(playerResult1,playerResult2){
-        if(playerResult1.points > playerResult2.points)
-            return 1;
-        return -1;
-
+        return playerResult1.points - playerResult2.points;
     });
+    
     $scope.players = result.playerResults;
     $scope.obtainedResult = false;
 
