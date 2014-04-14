@@ -28,12 +28,12 @@
         </div>
 
         <div id="drawCards" ng-style="drawBackground">
-            <input type="image" class="card" src="../images/UNO_Card.png" ng-click="drawCard()"
+            <input type="image" class="fixedSizeCard" src="../images/UNO_Card.png" ng-click="drawCard()"
                    ng-disabled="disableDraw ||openColorChooser"/>
         </div>
 
-        <div class="card" id="openPile">
-            <button class="card" ng-style="getCardProperties(openCard)" disabled/>
+        <div id="openPile">
+            <button class="fixedSizeCard" ng-style="getCardProperties(openCard)" disabled/>
         </div>
 
         <div id="warning">

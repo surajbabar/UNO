@@ -1,25 +1,30 @@
 
 #cardsLeft {
     height: 120px;
-    width: 420px;
-    overflow-x: scroll;
+    width: 450px;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
-#dummyCard {
-    height: 120px;
-    width: 80px;
+
+.dummyCard {
+    height: 100px;
+    width: 60px;
     float: left;
     font-weight: bold;
     color: #000000;
+    background-size:100% 100%;
 }
+
 #eachPlayerResult{
     height:130px;
     border-color: white;
     border-width: 5px;
 }
+
 #playerName {
     font-size: 40px;
-
 }
+
 #playerPoints {
     font-size: 40px;
 }

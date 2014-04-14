@@ -6,14 +6,9 @@ uno.controller('gameOverCtrl', function ($scope, playerService) {
     $scope.obtainedResult = false;
 
     var getProperImage = function (card) {
-        var colors = {
-            "blue": "../images/blue.png",
-            "red": "../images/red.png",
-            "green": "../images/green.png",
-            "yellow": "../images/yellow.png",
-            "black": card.sign == "Wild" ? "../images/wild.png" : "../images/+4.png"
-        };
-        return colors[card.color] || card.color;
+        var cardPath = '../images/COLOR/SIGN.jpg';
+        cardPath = cardPath.replace('COLOR',card.color).replace('SIGN',card.sign);
+        return cardPath;
     };
 
     $scope.$watch("players", function () {
@@ -41,5 +36,4 @@ uno.controller('gameOverCtrl', function ($scope, playerService) {
             };
         };
     });
-
-})
+});

@@ -35,7 +35,6 @@ uno.controller('playerCtrl', function ($scope, $http, $location, $route, playerS
 
     var playerDetails = playerService.getPlayerDetails();
     var snapshot = playerService.getData();
-
     update(snapshot, $scope);
 
     var sendPlayerAction = function (path, actionData) {
