@@ -69,14 +69,18 @@ input[type=radio] {
 
 input[type=radio] + label {
     display:inline-block;
-    margin:-2px;
     padding: 4px 12px;
     width: 150px;
     text-align: center;
-    background-color: #d0d0d0;
-    border-color: #ddd;
+    background-color: gray;
     float: left;
+    margin: 1px;
 }
+
+input[type="submit"]:disabled
+{
+    background:gray;
+} 
 
 input[type=radio]:checked + label {
     background-image: none;

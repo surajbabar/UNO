@@ -4,12 +4,16 @@ angular.module('clientController').controller('joinCtrl', function ($scope, $htt
     $http({method: 'get', url: config.host + 'mastersList/'}).success(function (data) {
         $scope.gameMasters = data;
         $scope.masterName = $scope.gameMasters[0];
+        $scope.disableJoin = !$scope.masterName;
     });
+
 
     $scope.changeMaster = function (masterNm) {
         $scope.masterName = masterNm;
+        $scope.disableJoin = false;
     };
 
+    $scope.disableJoin = true;
     $scope.playerName = "player";
     $scope.amIJoined = false;
     $scope.inUse = false;
