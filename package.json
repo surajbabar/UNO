@@ -1,6 +1,6 @@
 {
     "name": "UNO",
-    "main": "src/view/index.html",
+    "main": "src/view/client/template.html",
     "window": {
         "width": 1275,
         "height": 715,
