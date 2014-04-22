@@ -15,12 +15,7 @@ var getProperImage = function (card) {
 };
 
 var update = function (snapshot, $scope) {
-    $scope.players = checkForUno(snapshot.playerSummaries);
-
-    snapshot.myCards.sort(function(card1,card2){
-        return card1.color > card2.color;
-    });
-    
+    $scope.players = checkForUno(snapshot.playerSummaries);    
     $scope.myCards = snapshot.myCards;
     if (snapshot.currentTurnLog != '' && $scope.activityLog[0] != snapshot.currentTurnLog)
         $scope.activityLog.splice(0, 0, snapshot.currentTurnLog);
